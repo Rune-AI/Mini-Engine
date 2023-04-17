@@ -6,7 +6,7 @@
 class Font;
 class Texture2D;
 
-class TextComponent final : public Component
+class TextComponent : public Component
 {
 public:
 	TextComponent(Entity* object, const std::string& text, std::shared_ptr<Font> font);

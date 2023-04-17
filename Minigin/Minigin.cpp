@@ -12,6 +12,13 @@
 #include "Scene.h"
 #include "Entity.h"
 
+#pragma warning(push)
+#pragma warning(disable: 4996)
+#include <steam_api.h>
+#include <chrono>
+#include <thread>
+#pragma warning(pop)
+
 SDL_Window* g_window{};
 
 void PrintSDLVersion()
@@ -87,10 +94,28 @@ void dae::Minigin::Run(const std::function<void()>& load)
 
 	// todo: this update loop could use some work.
 	bool doContinue = true;
+
+	//const float fixedTimeStepSec{ 0.02f };
+	const float desiredFPS{ 144.f };
+	const int frameTimeMs{ 1000 / (int)desiredFPS };
+	float lag = 0.0f;
+
+	auto lastTime = std::chrono::high_resolution_clock::now();
+
 	while (doContinue)
 	{
+		const auto currentTime = std::chrono::high_resolution_clock::now();
+		const auto deltaTime = std::chrono::duration_cast<std::chrono::duration<float>>(currentTime - lastTime).count();
+
+		lastTime = currentTime;
+		lag += deltaTime;
+
+		SteamAPI_RunCallbacks();
 		doContinue = input.ProcessInput();
 		sceneManager.Update();
 		renderer.Render();
+
+		const auto sleeptime = currentTime + std::chrono::milliseconds(frameTimeMs) - std::chrono::high_resolution_clock::now();
+		std::this_thread::sleep_for(sleeptime);
 	}
 }
