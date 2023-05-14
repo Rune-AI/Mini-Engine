@@ -9,7 +9,7 @@
 
 #include "Singleton.h"
 
-class CSteamAchievements : public dae::Singleton<CSteamAchievements>
+class CSteamAchievements : public Singleton<CSteamAchievements>
 {
 private:
 	int64 m_iAppID; // Our current AppID

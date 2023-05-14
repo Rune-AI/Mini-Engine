@@ -9,7 +9,7 @@ struct Event
 	const char* name;
 };
 
-class EventManager final : public dae::Singleton<EventManager>
+class EventManager final : public Singleton<EventManager>
 {
 public:
 	void AttachEvent(const std::string& name, std::function<void(Event*)> pEventCallback);

@@ -11,6 +11,7 @@
 #include "ResourceManager.h"
 #include "Scene.h"
 #include "Entity.h"
+#include "Time.h"
 
 #pragma warning(push)
 #pragma warning(disable: 4996)
@@ -110,10 +111,11 @@ void dae::Minigin::Run(const std::function<void()>& load)
 		lastTime = currentTime;
 		lag += deltaTime;
 
-		SteamAPI_RunCallbacks();
 		doContinue = input.ProcessInput();
 		sceneManager.Update();
 		renderer.Render();
+
+		Time::GetInstance().Update(static_cast<float>(deltaTime));
 
 		const auto sleeptime = currentTime + std::chrono::milliseconds(frameTimeMs) - std::chrono::high_resolution_clock::now();
 		std::this_thread::sleep_for(sleeptime);

@@ -153,6 +153,12 @@
     <ClInclude Include="CSteamAchievements.h">
       <Filter>Engine\Steam</Filter>
     </ClInclude>
+    <ClInclude Include="FPSCounterComponent.h">
+      <Filter>Engine\ECS\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Time.h">
+      <Filter>Engine\Minigin</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Entity.cpp">
@@ -253,6 +259,12 @@
     </ClCompile>
     <ClCompile Include="CSteamAchievements.cpp">
       <Filter>Engine\Steam</Filter>
+    </ClCompile>
+    <ClCompile Include="FPSCounterComponent.cpp">
+      <Filter>Engine\ECS\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Time.cpp">
+      <Filter>Engine\Minigin</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

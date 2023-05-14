@@ -19,7 +19,7 @@ enum class InputState
 	Release
 };
 
-class InputManager final : public dae::Singleton<InputManager>
+class InputManager final : public Singleton<InputManager>
 {
 public:
 	bool ProcessInput();

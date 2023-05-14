@@ -2,7 +2,7 @@
 #include "EventManager.h"
 #include "IObserver.h"
 
-class ScoreHUD final :public TextComponent, public IObserver<int>
+class ScoreHUD final : public TextComponent, public IObserver<int>
 {
 public:
 	ScoreHUD(Entity* entity, int score);

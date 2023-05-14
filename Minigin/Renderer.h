@@ -7,7 +7,7 @@ class Texture2D;
 /**
 	* Simple RAII wrapper for the SDL renderer
 	*/
-class Renderer final : public dae::Singleton<Renderer>
+class Renderer final : public Singleton<Renderer>
 {
 	SDL_Renderer* m_renderer{};
 	SDL_Window* m_window{};

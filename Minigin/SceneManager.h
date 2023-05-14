@@ -7,7 +7,7 @@
 
 class Scene;
 
-class SceneManager final : public dae::Singleton<SceneManager>
+class SceneManager final : public Singleton<SceneManager>
 {
 public:
 	Scene& CreateScene(const std::string& name);
@@ -22,7 +22,7 @@ public:
 	void Render();
 	void RenderImGui();
 private:
-	friend class dae::Singleton<SceneManager>;
+	friend class Singleton<SceneManager>;
 	SceneManager() = default;
 	std::vector<std::unique_ptr<Scene>> m_scenes;
 };
