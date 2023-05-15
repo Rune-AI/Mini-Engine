@@ -32,3 +32,9 @@ std::shared_ptr<Font> ResourceManager::LoadFont(const std::string& file, unsigne
 {
 	return std::make_shared<Font>(m_dataPath + file, size);
 }
+
+std::string ResourceManager::LoadSound(const std::string& file) const
+{
+	const auto fullPath = m_dataPath + file;
+	return fullPath;
+}

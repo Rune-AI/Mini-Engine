@@ -34,6 +34,15 @@
     <Filter Include="Engine\Event">
       <UniqueIdentifier>{96ce0695-07b7-4efd-9a8b-2051d3ab1b0c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Services">
+      <UniqueIdentifier>{e37948c7-d703-49b5-b125-7d1c2d1fe3ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Services\Sound">
+      <UniqueIdentifier>{a63e1436-134c-4444-a1d3-b8edd0f4021e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Services\Log">
+      <UniqueIdentifier>{8c289ca9-517d-4f8e-a809-a8dd88516a04}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entity.h">
@@ -147,6 +156,18 @@
     <ClInclude Include="Time.h">
       <Filter>Engine\Minigin</Filter>
     </ClInclude>
+    <ClInclude Include="ServiceLocator.h">
+      <Filter>Engine\Services</Filter>
+    </ClInclude>
+    <ClInclude Include="ISoundService.h">
+      <Filter>Engine\Services\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="SDLSoundSystem.h">
+      <Filter>Engine\Services\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="LogService.h">
+      <Filter>Engine\Services\Log</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Entity.cpp">
@@ -250,6 +271,15 @@
     </ClCompile>
     <ClCompile Include="Time.cpp">
       <Filter>Engine\Minigin</Filter>
+    </ClCompile>
+    <ClCompile Include="ServiceLocator.cpp">
+      <Filter>Engine\Services</Filter>
+    </ClCompile>
+    <ClCompile Include="SDLSoundSystem.cpp">
+      <Filter>Engine\Services\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="LogService.cpp">
+      <Filter>Engine\Services\Log</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
