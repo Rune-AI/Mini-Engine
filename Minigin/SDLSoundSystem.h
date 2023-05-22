@@ -11,8 +11,8 @@ public:
     void Play(const std::string& soundName, const float volume) override;
 
 private:
-    class SDLSoundSystemImpl; // Forward declaration of the implementation class
-    std::unique_ptr<SDLSoundSystemImpl> m_pImpl; // Pointer to the implementation
+    class SDLSoundSystemImpl;
+    std::unique_ptr<SDLSoundSystemImpl> m_pImpl;
 
     void Stop();
 };
