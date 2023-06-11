@@ -19,9 +19,6 @@
     <Filter Include="3rdParty\imgui">
       <UniqueIdentifier>{1c35d339-0d3a-49df-8994-6c48e4cd5c61}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game">
-      <UniqueIdentifier>{c056236c-df44-40cf-8e83-f633f7a2a916}</UniqueIdentifier>
-    </Filter>
     <Filter Include="3rdParty\implot">
       <UniqueIdentifier>{24f120b7-8dc4-4150-8b30-35313bc71027}</UniqueIdentifier>
     </Filter>
@@ -42,6 +39,9 @@
     </Filter>
     <Filter Include="Engine\Services\Log">
       <UniqueIdentifier>{8c289ca9-517d-4f8e-a809-a8dd88516a04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Services\Physics">
+      <UniqueIdentifier>{5a344f52-b559-43bc-b21e-4b3860247719}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -153,7 +153,7 @@
     <ClInclude Include="FPSCounterComponent.h">
       <Filter>Engine\ECS\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Time.h">
+    <ClInclude Include="EngineTime.h">
       <Filter>Engine\Minigin</Filter>
     </ClInclude>
     <ClInclude Include="ServiceLocator.h">
@@ -167,6 +167,15 @@
     </ClInclude>
     <ClInclude Include="LogService.h">
       <Filter>Engine\Services\Log</Filter>
+    </ClInclude>
+    <ClInclude Include="RigidBody2DComponent.h">
+      <Filter>Engine\ECS\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="IPhysicsService.h">
+      <Filter>Engine\Services\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsService.h">
+      <Filter>Engine\Services\Physics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -230,9 +239,6 @@
     <ClCompile Include="TextComponent.cpp">
       <Filter>Engine\ECS\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Main.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
     <ClCompile Include="DieCommand.cpp">
       <Filter>Engine\Input\Commands</Filter>
     </ClCompile>
@@ -269,7 +275,7 @@
     <ClCompile Include="FPSCounterComponent.cpp">
       <Filter>Engine\ECS\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Time.cpp">
+    <ClCompile Include="EngineTime.cpp">
       <Filter>Engine\Minigin</Filter>
     </ClCompile>
     <ClCompile Include="ServiceLocator.cpp">
@@ -280,6 +286,12 @@
     </ClCompile>
     <ClCompile Include="LogService.cpp">
       <Filter>Engine\Services\Log</Filter>
+    </ClCompile>
+    <ClCompile Include="RigidBody2DComponent.cpp">
+      <Filter>Engine\ECS\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsService.cpp">
+      <Filter>Engine\Services\Physics</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

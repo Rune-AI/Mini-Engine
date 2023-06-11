@@ -1,5 +1,6 @@
 #pragma once
 #include "ISoundService.h"
+#include "IPhysicsService.h"
 
 class ServiceLocator final
 {
@@ -10,7 +11,9 @@ public:
     ServiceLocator& operator=(ServiceLocator&& other) = delete;
 
     static void RegisterSoundService(ISoundService* soundService);
+    static void RegisterPhysicsService(IPhysicsService* physicsService);
     static ISoundService* GetSoundService();
+    static IPhysicsService* GetPhysicsService();
 
     static void DestroyServices();
 
@@ -20,4 +23,7 @@ private:
 
     inline static NullSoundService m_defaultSoundService{};
     static ISoundService* m_soundService;
+
+    inline static NullPhysicsService m_defaultPhysicsService{};
+    static IPhysicsService* m_physicsService;
 };

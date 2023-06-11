@@ -76,32 +76,35 @@ void InputManager::UpdateComputerInput(SDL_Event event)
 
 void InputManager::UpdateConsoleInput()
 {
-	m_XboxController->Update();
-
-	for (auto& command : m_ConsoleCommands)
+	if (m_XboxController)
 	{
-		switch (command.second.first)
-		{
-		case InputState::Press:
-			if (m_XboxController->IsDownThisFrame(command.first))
-			{
-				command.second.second->Execute();
-			}
-			break;
-		case InputState::Hold:
-			if (m_XboxController->IsPressed(command.first))
-			{
-				command.second.second->Execute();
-			}
-			break;
-		case InputState::Release:
-			if (m_XboxController->IsUpThisFrame(command.first))
-			{
-				command.second.second->Execute();
-			}
-			break;
-		}
+		m_XboxController->Update();
 
+		for (auto& command : m_ConsoleCommands)
+		{
+			switch (command.second.first)
+			{
+			case InputState::Press:
+				if (m_XboxController->IsDownThisFrame(command.first))
+				{
+					command.second.second->Execute();
+				}
+				break;
+			case InputState::Hold:
+				if (m_XboxController->IsPressed(command.first))
+				{
+					command.second.second->Execute();
+				}
+				break;
+			case InputState::Release:
+				if (m_XboxController->IsUpThisFrame(command.first))
+				{
+					command.second.second->Execute();
+				}
+				break;
+			}
+
+		}
 	}
 }
 

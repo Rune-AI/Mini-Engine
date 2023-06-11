@@ -52,6 +52,13 @@ public:
 	const std::vector<Entity*>& GetChildren() const;
 
 
+	void SetActive(bool value);
+	bool IsActive() const;
+	void SetCanBeDestroyed(bool value);
+	bool CanBeDestroyed() const;
+	void MarkForDeletion();
+	bool IsMarkedForDeletion() const;
+
 private:
 	void AddChild(Entity* pChild);
 	void RemoveChild(Entity* pChild);
@@ -63,6 +70,9 @@ private:
 	std::vector<Entity*> m_pChildren;
 
 	bool m_ParentsChanged{};
+	bool m_IsActive{ true };
+	bool m_MarkedForDeletion{ false};
+	bool m_CanBeDestroyed{ true };
 };
 
 

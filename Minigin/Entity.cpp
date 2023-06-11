@@ -129,3 +129,33 @@ const std::vector<Entity*>& Entity::GetChildren() const
 {
 	return m_pChildren;
 }
+
+void Entity::SetActive(bool value)
+{
+	m_IsActive = value;
+}
+
+bool Entity::IsActive() const
+{
+	return m_IsActive;
+}
+
+void Entity::SetCanBeDestroyed(bool value)
+{
+	m_CanBeDestroyed = value;
+}
+
+bool Entity::CanBeDestroyed() const
+{
+	return m_CanBeDestroyed;
+}
+
+void Entity::MarkForDeletion()
+{
+	m_MarkedForDeletion = true;
+}
+
+bool Entity::IsMarkedForDeletion() const
+{
+	return m_MarkedForDeletion;
+}

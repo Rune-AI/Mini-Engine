@@ -15,12 +15,12 @@ public:
 	virtual void RenderImGui() {};
 
 	bool GetCanBeRemoved();
+	Entity* GetOwner() const;
 
 	friend class Entity;
 	
 protected:
 	explicit Component(Entity* pOwner) : m_pOwner{ pOwner } {}
-	Entity* GetOwner() const;
 	void SetCanBeRemoved(bool value);
 	
 	Entity* m_pOwner{};

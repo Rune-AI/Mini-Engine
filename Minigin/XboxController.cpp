@@ -112,10 +112,6 @@ private:
 	ControllerCommandsMap m_ConsoleCommands{};
 };
 
-XboxController::XboxController()
-{
-}
-
 XboxController::XboxController(int)
 	:pImpl{ std::make_unique<XboxControllerImpl>() }
 {

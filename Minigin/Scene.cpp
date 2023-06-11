@@ -26,6 +26,8 @@ void Scene::RemoveAll()
 
 void Scene::Update()
 {
+	if (!IsActive) return;
+
 	for(auto& object : m_objects)
 	{
 		object->Update();
@@ -34,6 +36,8 @@ void Scene::Update()
 
 void Scene::Render() const
 {
+	if (!IsActive) return;
+
 	for (const auto& object : m_objects)
 	{
 		object->Render();
@@ -42,6 +46,8 @@ void Scene::Render() const
 
 void Scene::RenderImGui()
 {
+	if (!IsActive) return;
+
 	for (const auto& object : m_objects)
 	{
 		object->RenderImGui();

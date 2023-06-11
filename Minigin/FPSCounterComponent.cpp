@@ -1,6 +1,6 @@
 #include "FPSCounterComponent.h"
 #include "ResourceManager.h"
-#include "Time.h"
+#include "EngineTime.h"
 #include <format>
 
 FPSCounterComponent::FPSCounterComponent(Entity* entity, std::shared_ptr<Font> font)
@@ -10,7 +10,7 @@ FPSCounterComponent::FPSCounterComponent(Entity* entity, std::shared_ptr<Font> f
 
 void FPSCounterComponent::Update()
 {
-	float deltaTime = Time::GetInstance().GetDeltaTime();
+	float deltaTime = TIME.GetDeltaTime();
 	m_TimeSinceLastFPSPush += deltaTime;
 
 	if (m_TimeSinceLastFPSPush >= 0.5f)

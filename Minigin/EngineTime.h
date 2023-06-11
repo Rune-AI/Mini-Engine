@@ -1,6 +1,9 @@
 #pragma once
 #include "Singleton.h"
 
+#define TIME Time::GetInstance()
+
+
 class Time final : public Singleton<Time>
 {
 public:
@@ -13,4 +16,3 @@ private:
 	float m_DeltaTime{};
 	double m_ElapsedTime{};
 };
-

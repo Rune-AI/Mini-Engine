@@ -11,7 +11,7 @@
 #include "ResourceManager.h"
 #include "Scene.h"
 #include "Entity.h"
-#include "Time.h"
+#include "EngineTime.h"
 
 #include <chrono>
 #include <thread>
@@ -111,7 +111,8 @@ void dae::Minigin::Run(const std::function<void()>& load)
 		sceneManager.Update();
 		renderer.Render();
 
-		Time::GetInstance().Update(static_cast<float>(deltaTime));
+		
+		TIME.Update(static_cast<float>(deltaTime));
 
 		const auto sleeptime = currentTime + std::chrono::milliseconds(frameTimeMs) - std::chrono::high_resolution_clock::now();
 		std::this_thread::sleep_for(sleeptime);

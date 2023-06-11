@@ -1,7 +1,6 @@
 #include <string>
 #include "TextureComponent.h"
 #include "ResourceManager.h"
-#include "Texture2D.h"
 #include "Entity.h"
 #include "TransformComponent.h"
 #include "Renderer.h"
@@ -17,6 +16,12 @@ TextureComponent::TextureComponent(Entity* object, const std::string& textureFil
 {
 }
 
+TextureComponent::TextureComponent(Entity* object, std::shared_ptr<Texture2D> texture)
+: Component{ object },
+	m_pTexture{ texture }
+{
+}
+
 TextureComponent::~TextureComponent()
 {
 }
@@ -27,7 +32,7 @@ void TextureComponent::Update()
 
 void TextureComponent::Render() const
 {
-	const auto& pos = m_pOwner->GetTransform()->GetLocalPosition();
+	const auto& pos = m_pOwner->GetTransform()->GetWorldPosition();
 	Renderer::GetInstance().RenderTexture(*m_pTexture, pos.x, pos.y);
 }
 

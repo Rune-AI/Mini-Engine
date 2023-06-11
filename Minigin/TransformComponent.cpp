@@ -182,6 +182,14 @@ void TransformComponent::UpdateWorldPosition()
 	{
 		m_worldPosition = m_localPosition;
 	}
+
+
+	//set all children dirty so they update their world position
+	for (auto pChild : m_pOwner->GetChildren())
+	{
+		pChild->GetTransform()->SetPositionDirty();
+	}
+
 	m_positionDirty = false;
 }
 
@@ -196,6 +204,13 @@ void TransformComponent::UpdateWorldRotation()
 	{
 		m_worldRotation = m_localRotation;
 	}
+
+	//set all children dirty so they update their world rotation
+	for (auto pChild : m_pOwner->GetChildren())
+	{
+		pChild->GetTransform()->SetRotationDirty();
+	}
+
 	m_rotationDirty = false;
 }
 
@@ -210,6 +225,13 @@ void TransformComponent::UpdateWorldScale()
 	{
 		m_worldScale = m_localScale;
 	}
+
+	//set all children dirty so they update their world scale
+	for (auto pChild : m_pOwner->GetChildren())
+	{
+		pChild->GetTransform()->SetScaleDirty();
+	}
+
 	m_scaleDirty = false;
 }
 

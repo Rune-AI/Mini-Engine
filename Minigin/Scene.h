@@ -23,7 +23,12 @@ public:
 	Scene& operator=(const Scene& other) = delete;
 	Scene& operator=(Scene&& other) = delete;
 
-private: 
+	bool GetIsActive() const { return IsActive; };
+	void SetIsActive(bool value) { IsActive = value; };
+private:
+	bool IsActive{true};
+
+
 	std::string m_name;
 	std::vector <std::unique_ptr<Entity>> m_objects{};
 
