@@ -5,6 +5,7 @@
 
 #include <memory>
 #include <Texture2D.h>
+#include <vector>
 
 namespace DigDug
 {
@@ -20,19 +21,37 @@ namespace DigDug
 		Player& operator=(Player&& other) = delete;
 
 		virtual void Update() override;
-		virtual void Render() const override {};
+		virtual void Render() const override;
 
-		void Pump();
-
+		void OnPumpShoot();
 	private:
-		void OnPumpHit();
+		void Move();
+		void HandleControllerInput();
+		void HandleKeyboardInput();
 
+		void UpdatePump();
+		void RenderPump() const;
+		void OnPumpHit();
+		void OnPumpPulse();
+
+		float m_pumpHeadDistance{};
+		float m_pumpHeadSpeed{10.f};
+		float m_pumpHeadMaxDistance{ 16.f * 3.f };
+		float m_pumpPulseTime{};
+		float m_pumpPulseInterval{};
 
 		bool m_IsPumping{ false };
+		bool m_IsPumpAttached{ false };
 		bool m_IsDigging{ false };
 
-		std::shared_ptr<Texture2D> m_PumpTexture{};
-		std::shared_ptr<Texture2D> m_RopeTexture{};
+		bool m_IsMovementButtonPressed{};
+		glm::vec2 m_moveDirection {};
+		float m_angle{};
+
+
+		std::shared_ptr<Texture2D> m_idleTexture{};
+		std::shared_ptr<Texture2D> m_pumpTexture{};
+		std::shared_ptr<Texture2D> m_ropeTexture{};
 	};
 }
 
