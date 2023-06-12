@@ -1,6 +1,7 @@
 #pragma once
 
 #include "XboxController.h"
+#include "Keyboard.h"
 #include "Singleton.h"
 #include <Xinput.h>
 #include <SDL.h>
@@ -25,6 +26,7 @@ public:
 	bool ProcessInput();
 
 	XboxController* GetController() const;
+	Keyboard* GetKeyboard() const;
 
 	template<typename T>
 	void CreateConsoleCommand(int key, InputState state, class Entity* entity);
@@ -45,6 +47,7 @@ private:
 	CommandsMap m_DesktopCommands{};
 	
 	std::unique_ptr<XboxController> m_XboxController{}; 
+	std::unique_ptr<Keyboard> m_Keyboard{std::make_unique<Keyboard>()};
 };
 
 template<typename CommandType>

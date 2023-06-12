@@ -42,6 +42,11 @@ XboxController* InputManager::GetController() const
 	return m_XboxController.get();
 }
 
+Keyboard* InputManager::GetKeyboard() const
+{
+	return m_Keyboard.get();
+}
+
 void InputManager::CreateController(int controllerIndex)
 {
 	m_XboxController = std::make_unique<XboxController>(controllerIndex);
@@ -49,6 +54,8 @@ void InputManager::CreateController(int controllerIndex)
 
 void InputManager::UpdateComputerInput(SDL_Event event)
 {
+	m_Keyboard->Update();
+
 	for (auto& command : m_DesktopCommands)
 	{
 		auto key = event.key.keysym.scancode;
