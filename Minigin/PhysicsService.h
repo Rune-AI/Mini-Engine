@@ -1,14 +1,15 @@
 #ifndef PHYSICS_SERVICE_H
 #define PHYSICS_SERVICE_H
 
+#include "IPhysicsService.h"
+#include "RigidBody2DComponent.h"
+
 #include <vector>
 #include <unordered_set>
 #include <mutex>
 #include <unordered_map>
 #include <set>
 
-#include "IPhysicsService.h"
-#include "RigidBody2DComponent.h"
 
 class RigidBody2D;
 

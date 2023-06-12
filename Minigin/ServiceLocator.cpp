@@ -1,8 +1,8 @@
 #include "ServiceLocator.h"
 #include "ISoundService.h"
-#include "IPhysicsService.h"
 
 ISoundService* ServiceLocator::m_soundService{ &m_defaultSoundService };
+IPhysicsService* ServiceLocator::m_physicsService{&m_defaultPhysicsService};
 
 void ServiceLocator::RegisterSoundService(ISoundService* soundService)
 {
@@ -34,5 +34,10 @@ void ServiceLocator::DestroyServices()
     {
         delete m_soundService;
         m_soundService = &m_defaultSoundService;
+    }
+    if (m_physicsService != &m_defaultPhysicsService)
+    {
+        delete m_physicsService;
+        m_physicsService = &m_defaultPhysicsService;
     }
 }

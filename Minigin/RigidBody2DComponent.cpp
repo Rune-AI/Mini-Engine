@@ -3,10 +3,12 @@
 #include "PhysicsService.h"
 #include "Entity.h"
 
-RigidBody2DComponent::RigidBody2DComponent(Entity* object, const BoxCollider collider)
+RigidBody2DComponent::RigidBody2DComponent(Entity* object, const float width, const float height)
     : Component(object)
-    , m_Collider{ collider }
 {
+    m_Collider.width = width;
+    m_Collider.height = height;
+
     ServiceLocator::GetPhysicsService()->AddRigidBody(this);
     GetOwner()->SetCanBeDestroyed(false);
 }

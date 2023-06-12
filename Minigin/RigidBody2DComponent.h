@@ -1,3 +1,4 @@
+// Inspired by Arne
 #ifndef RIGIDBODY_COMPONENT_H
 #define RIGIDBODY_COMPONENT_H
 #include "Component.h"
@@ -13,7 +14,7 @@ class RigidBody2DComponent : public Component
 
 
 public:
-	RigidBody2DComponent(Entity* object, const BoxCollider collider);
+	RigidBody2DComponent(Entity* object, const float width, const float height);
 
 	~RigidBody2DComponent() override = default;
 	RigidBody2DComponent(const RigidBody2DComponent& other) = delete;
@@ -41,8 +42,6 @@ private:
 	std::function<void(RigidBody2DComponent*)> m_OnCollisionEnterCallback{};
 	std::function<void(RigidBody2DComponent*)> m_OnCollisionExitCallback{};
 	std::function<void(RigidBody2DComponent*)> m_OnCollisionCallback{};
-
-
 };
 
 
