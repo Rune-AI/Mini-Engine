@@ -32,8 +32,21 @@ void TextureComponent::Update()
 
 void TextureComponent::Render() const
 {
-	const auto& pos = m_pOwner->GetTransform()->GetWorldPosition();
-	Renderer::GetInstance().RenderTexture(*m_pTexture, pos.x, pos.y);
+	/*const auto& pos = m_pOwner->GetTransform()->GetWorldPosition();
+	Renderer::GetInstance().RenderTexture(*m_pTexture, pos.x, pos.y);*/
+
+
+    const auto pos = m_pOwner->GetTransform()->GetWorldPosition();
+    const auto scale = m_pOwner->GetTransform()->GetWorldScale();
+    glm::vec2 textureSize = m_pTexture->GetSize();
+    textureSize *= scale;
+
+
+    Renderer::GetInstance().RenderTexture(*m_pTexture,
+        pos.x, pos.y,
+        float(textureSize.x), float(textureSize.y));
+
+
 }
 
 void TextureComponent::RenderImGui()
