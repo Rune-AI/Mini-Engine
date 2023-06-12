@@ -25,6 +25,9 @@ public:
 
 	bool GetIsActive() const { return IsActive; };
 	void SetIsActive(bool value) { IsActive = value; };
+
+	std::string GetName() const { return m_name; };
+
 private:
 	bool IsActive{true};
 
