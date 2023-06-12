@@ -2,6 +2,7 @@
 #include "Component.h"
 #include "TransformComponent.h"
 #include <glm/ext/vector_float2.hpp>
+#include <string>
 
 
 Entity::Entity()
@@ -158,4 +159,21 @@ void Entity::MarkForDeletion()
 bool Entity::IsMarkedForDeletion() const
 {
 	return m_MarkedForDeletion;
+}
+
+void Entity::AddTag(const std::string& tag)
+{
+	m_Tags.emplace_back(tag);
+}
+
+void Entity::RemoveTag(const std::string& tag)
+{
+	m_Tags.erase(
+		std::remove_if(m_Tags.begin(), m_Tags.end(), [tag](auto ftag) { return ftag == tag; })
+	);
+}
+
+bool Entity::HasTag(const std::string& tag) const
+{
+	return std::find(m_Tags.begin(), m_Tags.end(), tag) != m_Tags.end();
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <memory>
+#include <string>
 
 //#include "Component.h"
 //#include "TransformComponent.h"
@@ -59,6 +60,10 @@ public:
 	void MarkForDeletion();
 	bool IsMarkedForDeletion() const;
 
+	void AddTag(const std::string& tag);
+	void RemoveTag(const std::string& tag);
+	bool HasTag(const std::string& tag) const;
+
 private:
 	void AddChild(Entity* pChild);
 	void RemoveChild(Entity* pChild);
@@ -68,6 +73,8 @@ private:
 
 	Entity* m_pParent;
 	std::vector<Entity*> m_pChildren;
+
+	std::vector<std::string> m_Tags;
 
 	bool m_ParentsChanged{};
 	bool m_IsActive{ true };
