@@ -20,6 +20,8 @@ public:
 
 	void RenderTexture(const Texture2D& texture, float x, float y) const;
 	void RenderTexture(const Texture2D& texture, float x, float y, float width, float height) const;
+	void RenderTextureEx(const Texture2D& texture, const float x, const float y, const float angle, const SDL_RendererFlip flip) const;
+	void RenderTextureEx(const Texture2D& texture, const float x, const float y, const float width, const float height, const float angle, const SDL_RendererFlip flip) const;
 
 	SDL_Renderer* GetSDLRenderer() const;
 
