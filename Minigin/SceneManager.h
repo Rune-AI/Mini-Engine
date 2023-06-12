@@ -21,6 +21,9 @@ public:
 	void Update();
 	void Render();
 	void RenderImGui();
+	Scene* GetScene(std::string name) const;
+
+
 private:
 	friend class Singleton<SceneManager>;
 	SceneManager() = default;

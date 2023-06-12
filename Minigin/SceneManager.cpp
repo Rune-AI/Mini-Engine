@@ -26,6 +26,18 @@ void SceneManager::RenderImGui()
 	}
 }
 
+Scene* SceneManager::GetScene(std::string name) const
+{
+	for(const auto& scene : m_scenes)
+	{
+		if (scene->GetName() == name)
+		{
+			return scene.get();
+		}
+	}
+	return nullptr;
+}
+
 Scene& SceneManager::CreateScene(const std::string& name)
 {
 	//const auto& scene = std::unique_ptr<Scene>(std::make_unique<Scene>(name));
