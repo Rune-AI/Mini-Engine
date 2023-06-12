@@ -9,9 +9,9 @@
 #include "SceneManager.h"
 #include "InputManager.h"
 #include "ServiceLocator.h"
-#include "PhysicsService.h"
 #include "SDLSoundSystem.h"
 #include "LogService.h"
+#include "PhysicsService.h"
 
 #include <iostream>
 
@@ -21,8 +21,13 @@
 #include <TextureComponent.h>
 #include <TransformComponent.h>
 
+#include "LevelComponent.h"
 #include "LerpTranslateComponent.h"
 #include "Player.h"
+#include "PumpCommand.h"
+#include "PookaComponent.h"
+#include "FygarComponent.h"
+#include "StageLoader.h"
 
 
 constexpr auto windowWidth = 640;
@@ -87,14 +92,77 @@ Scene* createGameScene()
 Scene* createLevelScene()
 {
 	// has all the enemies, players, level, etc
-	auto& scene = SceneManager::GetInstance().CreateScene("Game");
+	DigDug::StageLoader loader {};
+	DigDug::Stage stage {};
+	loader.LoadStage("Data/Resources/Levels/Stage_0.json", stage);
 
-	auto playerRoot = std::make_unique<Entity>();
-	playerRoot->AddComponent<DigDug::Player>();
-	playerRoot->AddComponent<TextureComponent>("Resources/Sprites/Logo.png");
+	auto& scene = SceneManager::GetInstance().CreateScene(stage.name);
 
-	scene.Add(std::move(playerRoot));
+	const float scaleX = windowWidth / (float(stage.cols + 4) * 16);
+	const float scaleY = windowHeight / (float(stage.rows) * 16);
 
+	const float scaledWidth = scaleX * 16;
+	const float scaledHeight = scaleY * 16;
+
+	auto sceneRoot = std::make_unique<Entity>();
+	sceneRoot->GetTransform()->SetLocalScale(scaleX, scaleY);
+
+
+	auto level = std::make_unique<Entity>();
+	sceneRoot->AttachChild(level.get(), true);
+	level->AddComponent<DigDug::LevelComponent>(stage);
+	scene.Add(std::move(level));
+
+
+	for (auto pos : stage.rocks)
+	{
+		auto rock = std::make_unique<Entity>();
+		sceneRoot->AttachChild(rock.get(), false);
+		float posX = (pos.col) * scaledWidth;
+		float posY = (pos.row) * scaledHeight;
+		rock->GetTransform()->SetLocalPosition(posX, posY);
+		rock->AddComponent<TextureComponent>("Resources/Sprites/Enemies/Rock/0.png");
+		scene.Add(std::move(rock));
+	}
+	
+	for (auto pos : stage.pookas)
+	{
+		auto pooka = std::make_unique<Entity>();
+		sceneRoot->AttachChild(pooka.get(), false);
+		float posX = (pos.col) * scaledWidth;
+		float posY = (pos.row) * scaledHeight;
+		pooka->GetTransform()->SetLocalPosition(posX, posY);
+		pooka->AddComponent<DigDug::PookaComponent>();
+		scene.Add(std::move(pooka));
+	}
+
+	for (auto pos : stage.fygars)
+	{
+		auto fygars = std::make_unique<Entity>();
+		sceneRoot->AttachChild(fygars.get(), false);
+		float posX = (pos.col) * scaledWidth;
+		float posY = (pos.row) * scaledHeight;
+		fygars->GetTransform()->SetLocalPosition(posX, posY);
+		fygars->AddComponent<DigDug::FygarComponent>();
+		scene.Add(std::move(fygars));
+	}
+
+
+	auto player = std::make_unique<Entity>();
+	sceneRoot->AttachChild(player.get(), true);
+	//playerRoot->GetTransform()->SetLocalPosition(50.f, 50.f);
+	player->AddComponent<DigDug::Player>();
+
+
+	InputManager::GetInstance().CreateController(0);
+
+	InputManager::GetInstance().CreateDesktopCommand<PumpCommand>(SDL_SCANCODE_SPACE, InputState::Press, player.get());
+	InputManager::GetInstance().CreateConsoleCommand<PumpCommand>(XINPUT_GAMEPAD_A, InputState::Press, player.get());
+
+	
+	scene.Add(std::move(sceneRoot));
+	
+	scene.Add(std::move(player));
 	return &scene;
 }
 
@@ -118,15 +186,10 @@ void load()
 
 int main(int, char* [])
 {
-	/*#ifdef DEBUG
-		ServiceLocator::RegisterSoundService(new LogService(new SDLSoundSystem(4)));
-	#else
-	#endif*/
-
 	ServiceLocator::RegisterSoundService(new SDLSoundSystem(4));
 	ServiceLocator::RegisterPhysicsService(new PhysicsService());
 
-	dae::Minigin engine("./Data/");
+	dae::Minigin engine("./Data/", windowWidth, windowHeight);
 	engine.Run(load);
 
 	ServiceLocator::DestroyServices();
