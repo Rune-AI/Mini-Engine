@@ -111,9 +111,6 @@
     <ClInclude Include="TextComponent.h">
       <Filter>Engine\ECS\Components</Filter>
     </ClInclude>
-    <ClInclude Include="DieCommand.h">
-      <Filter>Engine\Input\Commands</Filter>
-    </ClInclude>
     <ClInclude Include="Command.h">
       <Filter>Engine\Input\Commands</Filter>
     </ClInclude>
@@ -134,24 +131,6 @@
     </ClInclude>
     <ClInclude Include="Subject.h">
       <Filter>Engine\Event</Filter>
-    </ClInclude>
-    <ClInclude Include="HealthComponent.h">
-      <Filter>Engine\ECS\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="HealthHUD.h">
-      <Filter>Engine\ECS\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="ScoreComponent.h">
-      <Filter>Engine\ECS\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="ScoreHUD.h">
-      <Filter>Engine\ECS\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="ScoreCommand.h">
-      <Filter>Engine\Input\Commands</Filter>
-    </ClInclude>
-    <ClInclude Include="FPSCounterComponent.h">
-      <Filter>Engine\ECS\Components</Filter>
     </ClInclude>
     <ClInclude Include="EngineTime.h">
       <Filter>Engine\Minigin</Filter>
@@ -176,6 +155,9 @@
     </ClInclude>
     <ClInclude Include="PhysicsService.h">
       <Filter>Engine\Services\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Keyboard.h">
+      <Filter>Engine\Input</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -239,9 +221,6 @@
     <ClCompile Include="TextComponent.cpp">
       <Filter>Engine\ECS\Components</Filter>
     </ClCompile>
-    <ClCompile Include="DieCommand.cpp">
-      <Filter>Engine\Input\Commands</Filter>
-    </ClCompile>
     <ClCompile Include="Command.cpp">
       <Filter>Engine\Input\Commands</Filter>
     </ClCompile>
@@ -256,24 +235,6 @@
     </ClCompile>
     <ClCompile Include="EventManager.cpp">
       <Filter>Engine\Event</Filter>
-    </ClCompile>
-    <ClCompile Include="HealthComponent.cpp">
-      <Filter>Engine\ECS\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="HealthHUD.cpp">
-      <Filter>Engine\ECS\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="ScoreComponent.cpp">
-      <Filter>Engine\ECS\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="ScoreHUD.cpp">
-      <Filter>Engine\ECS\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="ScoreCommand.cpp">
-      <Filter>Engine\Input\Commands</Filter>
-    </ClCompile>
-    <ClCompile Include="FPSCounterComponent.cpp">
-      <Filter>Engine\ECS\Components</Filter>
     </ClCompile>
     <ClCompile Include="EngineTime.cpp">
       <Filter>Engine\Minigin</Filter>
@@ -292,6 +253,9 @@
     </ClCompile>
     <ClCompile Include="PhysicsService.cpp">
       <Filter>Engine\Services\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Keyboard.cpp">
+      <Filter>Engine\Input</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
