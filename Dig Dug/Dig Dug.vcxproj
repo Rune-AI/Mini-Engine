@@ -80,7 +80,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Minigin;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\imgui;$(SolutionDir)3rdParty\implot;$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Minigin;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\imgui;$(SolutionDir)3rdParty\rapidjson;$(SolutionDir)3rdParty\implot;$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalUsingDirectories>$(SolutionDir)Minigin;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
@@ -100,7 +100,7 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\$(PlatformTarget)\*.dll" "$(OutputPat
 
 xcopy "$(SolutionDir)3rdParty\SDL2_mixer\lib\$(PlatformTarget)\*.dll" "$(OutputPath)" /R /Y
 
-xcopy "$(ProjectDir)Data\*" "$(OutputPath)Data\" /R /Y
+xcopy "$(ProjectDir)Data\*.*" "$(OutputPath)Data\" /Y /I /E
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -112,7 +112,7 @@ xcopy "$(ProjectDir)Data\*" "$(OutputPath)Data\" /R /Y
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Minigin;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\imgui;$(SolutionDir)3rdParty\implot;$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Minigin;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\imgui;$(SolutionDir)3rdParty\rapidjson;$(SolutionDir)3rdParty\implot;$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalUsingDirectories>$(SolutionDir)Minigin;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
@@ -134,7 +134,7 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\$(PlatformTarget)\*.dll" "$(OutputPat
 
 xcopy "$(SolutionDir)3rdParty\SDL2_mixer\lib\$(PlatformTarget)\*.dll" "$(OutputPath)" /R /Y
 
-xcopy "$(ProjectDir)Data\*" "$(OutputPath)Data\" /R /Y
+xcopy "$(ProjectDir)Data\*.*" "$(OutputPath)Data\" /Y /I /E
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -144,7 +144,7 @@ xcopy "$(ProjectDir)Data\*" "$(OutputPath)Data\" /R /Y
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Minigin;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\imgui;$(SolutionDir)3rdParty\implot;$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Minigin;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\imgui;$(SolutionDir)3rdParty\rapidjson;$(SolutionDir)3rdParty\implot;$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalUsingDirectories>$(SolutionDir)Minigin;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
@@ -164,7 +164,7 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\$(PlatformTarget)\*.dll" "$(OutputPat
 
 xcopy "$(SolutionDir)3rdParty\SDL2_mixer\lib\$(PlatformTarget)\*.dll" "$(OutputPath)" /R /Y
 
-xcopy "$(ProjectDir)Data\*" "$(OutputPath)Data\" /R /Y
+xcopy "$(ProjectDir)Data\*.*" "$(OutputPath)Data\" /Y /I /E
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -176,7 +176,7 @@ xcopy "$(ProjectDir)Data\*" "$(OutputPath)Data\" /R /Y
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Minigin;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\imgui;$(SolutionDir)3rdParty\implot;$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Minigin;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\imgui;$(SolutionDir)3rdParty\rapidjson;$(SolutionDir)3rdParty\implot;$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalUsingDirectories>$(SolutionDir)Minigin;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
@@ -198,18 +198,33 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\$(PlatformTarget)\*.dll" "$(OutputPat
 
 xcopy "$(SolutionDir)3rdParty\SDL2_mixer\lib\$(PlatformTarget)\*.dll" "$(OutputPath)" /R /Y
 
-xcopy "$(ProjectDir)Data\*" "$(OutputPath)Data\" /R /Y
+xcopy "$(ProjectDir)Data\*.*" "$(OutputPath)Data\" /Y /I /E
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="FygarComponent.cpp" />
+    <ClCompile Include="InflatableComponent.cpp" />
     <ClCompile Include="LerpTranslateComponent.cpp" />
+    <ClCompile Include="LevelComponent.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MoveCommand.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PookaComponent.cpp" />
+    <ClCompile Include="PumpCommand.cpp" />
+    <ClCompile Include="StageLoader.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="FygarComponent.h" />
+    <ClInclude Include="InflatableComponent.h" />
     <ClInclude Include="LerpTranslateComponent.h" />
+    <ClInclude Include="LevelComponent.h" />
+    <ClInclude Include="MoveCommand.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PookaComponent.h" />
+    <ClInclude Include="PumpCommand.h" />
+    <ClInclude Include="Stage.h" />
+    <ClInclude Include="StageLoader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

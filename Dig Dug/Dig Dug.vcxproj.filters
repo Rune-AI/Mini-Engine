@@ -14,6 +14,18 @@
     <Filter Include="Source Files\Components\Player">
       <UniqueIdentifier>{827dfa4a-84db-49da-a587-c1fbd7c0cbbd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Components\Level">
+      <UniqueIdentifier>{d97ee1bd-e055-4539-b287-23de1a90b504}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Commands">
+      <UniqueIdentifier>{6bd9b01e-1b52-40d1-979b-235678d6376f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\Enemies">
+      <UniqueIdentifier>{d4a9c2a1-c335-453f-b99c-5feb7e825ac2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\StageLoader">
+      <UniqueIdentifier>{81618c17-7d12-4e7f-a8f9-a67486794873}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -25,6 +37,27 @@
     <ClCompile Include="Player.cpp">
       <Filter>Source Files\Components\Player</Filter>
     </ClCompile>
+    <ClCompile Include="LevelComponent.cpp">
+      <Filter>Source Files\Components\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveCommand.cpp">
+      <Filter>Source Files\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="PumpCommand.cpp">
+      <Filter>Source Files\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="PookaComponent.cpp">
+      <Filter>Source Files\Components\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="FygarComponent.cpp">
+      <Filter>Source Files\Components\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="InflatableComponent.cpp">
+      <Filter>Source Files\Components\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="StageLoader.cpp">
+      <Filter>Source Files\StageLoader</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LerpTranslateComponent.h">
@@ -32,6 +65,30 @@
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Source Files\Components\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelComponent.h">
+      <Filter>Source Files\Components\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveCommand.h">
+      <Filter>Source Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="PumpCommand.h">
+      <Filter>Source Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="PookaComponent.h">
+      <Filter>Source Files\Components\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="FygarComponent.h">
+      <Filter>Source Files\Components\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="InflatableComponent.h">
+      <Filter>Source Files\Components\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="StageLoader.h">
+      <Filter>Source Files\StageLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage.h">
+      <Filter>Source Files\StageLoader</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
