@@ -58,6 +58,15 @@
     <ClCompile Include="StageLoader.cpp">
       <Filter>Source Files\StageLoader</Filter>
     </ClCompile>
+    <ClCompile Include="StartGameCommand.cpp">
+      <Filter>Source Files\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="StageComponent.cpp">
+      <Filter>Source Files\Components\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="TrailComponent.cpp">
+      <Filter>Source Files\Components\Level</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LerpTranslateComponent.h">
@@ -89,6 +98,15 @@
     </ClInclude>
     <ClInclude Include="Stage.h">
       <Filter>Source Files\StageLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="StartGameCommand.h">
+      <Filter>Source Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="StageComponent.h">
+      <Filter>Source Files\Components\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="TrailComponent.h">
+      <Filter>Source Files\Components\Level</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

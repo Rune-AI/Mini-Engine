@@ -74,6 +74,12 @@
     <Import Project="..\sdl.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
@@ -90,6 +96,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)3rdParty\SDL2\lib\$(PlatformTarget);$(SolutionDir)3rdParty\SDL2_mixer\lib\$(PlatformTarget);$(OutputPath);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>Minigin.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ForceFileOutput>
+      </ForceFileOutput>
     </Link>
     <PostBuildEvent>
       <Command>xcopy "$(SolutionDir)3rdParty\SDL2\lib\$(PlatformTarget)\SDL2.dll" "$(OutputPath)" /R /Y
@@ -124,6 +132,8 @@ xcopy "$(ProjectDir)Data\*.*" "$(OutputPath)Data\" /Y /I /E
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)3rdParty\SDL2\lib\$(PlatformTarget);$(SolutionDir)3rdParty\SDL2_mixer\lib\$(PlatformTarget);$(OutputPath);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>Minigin.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ForceFileOutput>
+      </ForceFileOutput>
     </Link>
     <PostBuildEvent>
       <Command>xcopy "$(SolutionDir)3rdParty\SDL2\lib\$(PlatformTarget)\SDL2.dll" "$(OutputPath)" /R /Y
@@ -154,6 +164,8 @@ xcopy "$(ProjectDir)Data\*.*" "$(OutputPath)Data\" /Y /I /E
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)3rdParty\SDL2\lib\$(PlatformTarget);$(SolutionDir)3rdParty\SDL2_mixer\lib\$(PlatformTarget);$(OutputPath);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>Minigin.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ForceFileOutput>
+      </ForceFileOutput>
     </Link>
     <PostBuildEvent>
       <Command>xcopy "$(SolutionDir)3rdParty\SDL2\lib\$(PlatformTarget)\SDL2.dll" "$(OutputPath)" /R /Y
@@ -188,6 +200,8 @@ xcopy "$(ProjectDir)Data\*.*" "$(OutputPath)Data\" /Y /I /E
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)3rdParty\SDL2\lib\$(PlatformTarget);$(SolutionDir)3rdParty\SDL2_mixer\lib\$(PlatformTarget);$(OutputPath);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>Minigin.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ForceFileOutput>
+      </ForceFileOutput>
     </Link>
     <PostBuildEvent>
       <Command>xcopy "$(SolutionDir)3rdParty\SDL2\lib\$(PlatformTarget)\SDL2.dll" "$(OutputPath)" /R /Y
@@ -212,7 +226,10 @@ xcopy "$(ProjectDir)Data\*.*" "$(OutputPath)Data\" /Y /I /E
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PookaComponent.cpp" />
     <ClCompile Include="PumpCommand.cpp" />
+    <ClCompile Include="StageComponent.cpp" />
     <ClCompile Include="StageLoader.cpp" />
+    <ClCompile Include="StartGameCommand.cpp" />
+    <ClCompile Include="TrailComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FygarComponent.h" />
@@ -224,7 +241,10 @@ xcopy "$(ProjectDir)Data\*.*" "$(OutputPath)Data\" /Y /I /E
     <ClInclude Include="PookaComponent.h" />
     <ClInclude Include="PumpCommand.h" />
     <ClInclude Include="Stage.h" />
+    <ClInclude Include="StageComponent.h" />
     <ClInclude Include="StageLoader.h" />
+    <ClInclude Include="StartGameCommand.h" />
+    <ClInclude Include="TrailComponent.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
