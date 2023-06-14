@@ -1,7 +1,7 @@
 #include "Keyboard.h"
 #include <vector>
 #include <SDL.h>
-class Keyboard::KeyboardImpl
+class BearBones::Keyboard::KeyboardImpl
 {
 public:
 	KeyboardImpl() :
@@ -50,32 +50,32 @@ private:
 	std::vector<Uint8> m_ButtonsReleasedThisFrame{};
 };
 
-Keyboard::Keyboard() :
+BearBones::Keyboard::Keyboard() :
 	m_KeyboardImpl{ std::make_unique<KeyboardImpl>() }
 {
 
 }
 
-Keyboard::~Keyboard()
+BearBones::Keyboard::~Keyboard()
 {
 }
 
-void Keyboard::Update()
+void BearBones::Keyboard::Update()
 {
 	m_KeyboardImpl->Update();
 }
 
-bool Keyboard::IsPressedThisFrame(unsigned int key) const
+bool BearBones::Keyboard::IsPressedThisFrame(unsigned int key) const
 {
 	return m_KeyboardImpl->IsPressedThisFrame(static_cast<SDL_Scancode>(key));
 }
 
-bool Keyboard::IsReleasedThisFrame(unsigned int key) const
+bool BearBones::Keyboard::IsReleasedThisFrame(unsigned int key) const
 {
 	return m_KeyboardImpl->IsReleasedThisFrame(static_cast<SDL_Scancode>(key));
 }
 
-bool Keyboard::IsPressed(unsigned int key) const
+bool BearBones::Keyboard::IsPressed(unsigned int key) const
 {
 	return m_KeyboardImpl->IsPressed(static_cast<SDL_Scancode>(key));
 }

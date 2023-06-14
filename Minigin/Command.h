@@ -1,13 +1,19 @@
-#pragma once
+#ifndef COMMAND_H
+#define COMMAND_H
 
-class Command
+namespace BearBones
 {
-public:
-	Command(class Entity* gobj) : m_Entity{ gobj } {};
-	virtual ~Command() {};
-	virtual void Execute() = 0;
-	virtual void Undo() {};
+	class Command
+	{
+	public:
+		Command(class Entity* gobj) : m_Entity{ gobj } {};
+		virtual ~Command() {};
+		virtual void Execute() = 0;
+		virtual void Undo() {};
 
-protected:
-	Entity* m_Entity{};
-};
+	protected:
+		Entity* m_Entity{};
+	};
+}
+
+#endif //COMMAND_H

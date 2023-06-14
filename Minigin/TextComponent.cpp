@@ -7,7 +7,7 @@
 #include "Entity.h"
 #include "TransformComponent.h"
 
-TextComponent::TextComponent(Entity* object, const std::string& text, std::shared_ptr<Font> font)
+BearBones::TextComponent::TextComponent(Entity* object, const std::string& text, std::shared_ptr<Font> font)
 	: Component{ object }
 	, m_needsUpdate(true)
 	, m_text(text)
@@ -16,7 +16,7 @@ TextComponent::TextComponent(Entity* object, const std::string& text, std::share
 {
 }
 
-void TextComponent::Update()
+void BearBones::TextComponent::Update()
 {
 	if (m_needsUpdate)
 	{
@@ -37,7 +37,7 @@ void TextComponent::Update()
 	}
 }
 
-void TextComponent::Render() const
+void BearBones::TextComponent::Render() const
 {
 	if (m_textTexture != nullptr)
 	{
@@ -46,11 +46,11 @@ void TextComponent::Render() const
 	}
 }
 
-void TextComponent::RenderImGui()
+void BearBones::TextComponent::RenderImGui()
 {
 }
 
-void TextComponent::SetText(const std::string& text)
+void BearBones::TextComponent::SetText(const std::string& text)
 {
 	m_text = text;
 	m_needsUpdate = true;

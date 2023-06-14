@@ -10,37 +10,39 @@
 #include <unordered_map>
 #include <set>
 
-
-class RigidBody2D;
-
-class PhysicsService final : public IPhysicsService
+namespace BearBones
 {
-public:
-    PhysicsService();
-    ~PhysicsService();
-    void AddRigidBody(RigidBody2DComponent* rb);
-    void CleanAll();
+    class RigidBody2D;
 
-    void Update();
+    class PhysicsService final : public IPhysicsService
+    {
+    public:
+        PhysicsService();
+        ~PhysicsService();
+        void AddRigidBody(RigidBody2DComponent* rb);
+        void CleanAll();
 
-private:
-    void PhysicsLoop();
-    void HaltPhysics();
+        void Update();
 
-    std::vector<RigidBody2DComponent*> m_RigidBodies;
-    std::vector<RigidBody2DComponent*> m_NewBodies{};
-    std::unordered_set<RigidBody2DComponent*> m_BodiesToErase{};
+    private:
+        void PhysicsLoop();
+        void HaltPhysics();
 
-    std::mutex m_PhysicsMutex{};
-    std::mutex m_AddNewBodiesMutex{};
-    std::condition_variable m_PhysicsCondition{};
-    std::condition_variable m_AddNewBodiesCondition{};
-    std::atomic<bool> m_stopRequested{ false };
-    std::jthread m_PhysicsThread;
+        std::vector<RigidBody2DComponent*> m_RigidBodies;
+        std::vector<RigidBody2DComponent*> m_NewBodies{};
+        std::unordered_set<RigidBody2DComponent*> m_BodiesToErase{};
+
+        std::mutex m_PhysicsMutex{};
+        std::mutex m_AddNewBodiesMutex{};
+        std::condition_variable m_PhysicsCondition{};
+        std::condition_variable m_AddNewBodiesCondition{};
+        std::atomic<bool> m_stopRequested{ false };
+        std::jthread m_PhysicsThread;
 
 
-    // rb id to list of colliding rb ids
-    std::unordered_map<RigidBody2DComponent*, std::set<RigidBody2DComponent*>> m_Collisions{};
-};
+        // rb id to list of colliding rb ids
+        std::unordered_map<RigidBody2DComponent*, std::set<RigidBody2DComponent*>> m_Collisions{};
+    };
+}
 
 #endif

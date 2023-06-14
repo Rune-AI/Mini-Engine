@@ -46,7 +46,7 @@ void PrintSDLVersion()
 		version.major, version.minor, version.patch);
 }
 
-dae::Minigin::Minigin(const std::string &dataPath, int windowWidth, int windowHeight)
+BearBones::Minigin::Minigin(const std::string &dataPath, int windowWidth, int windowHeight)
 {
 	PrintSDLVersion();
 	
@@ -73,7 +73,7 @@ dae::Minigin::Minigin(const std::string &dataPath, int windowWidth, int windowHe
 	ResourceManager::GetInstance().Init(dataPath);
 }
 
-dae::Minigin::~Minigin()
+BearBones::Minigin::~Minigin()
 {
 	Renderer::GetInstance().Destroy();
 	SDL_DestroyWindow(g_window);
@@ -81,7 +81,7 @@ dae::Minigin::~Minigin()
 	SDL_Quit();
 }
 
-void dae::Minigin::Run(const std::function<void()>& load)
+void BearBones::Minigin::Run(const std::function<void()>& load)
 {
 	load();
 

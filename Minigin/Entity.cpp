@@ -5,17 +5,17 @@
 #include <string>
 
 
-Entity::Entity()
+BearBones::Entity::Entity()
 	: m_pParent{}
 {
 	AddComponent<TransformComponent>();
 	m_TransformComponent = GetComponent<TransformComponent>();
 }
 
-Entity::~Entity() = default;
+BearBones::Entity::~Entity() = default;
 
 
-void Entity::Update()
+void BearBones::Entity::Update()
 {
 	for (const auto& component : m_pComponents)
 	{
@@ -24,7 +24,7 @@ void Entity::Update()
 	// todo : add erase flag, indexes to erase and erase them in update to avoid unexpected behaviors
 }
 
-void Entity::Render() const
+void BearBones::Entity::Render() const
 {
 	for (const auto& component : m_pComponents)
 	{
@@ -32,7 +32,7 @@ void Entity::Render() const
 	}
 }
 
-void Entity::RenderImGui()
+void BearBones::Entity::RenderImGui()
 {
 	for (const auto& component : m_pComponents)
 	{
@@ -40,19 +40,19 @@ void Entity::RenderImGui()
 	}
 }
 
-void Entity::AddChild(Entity* child)
+void BearBones::Entity::AddChild(Entity* child)
 {
 	m_pChildren.emplace_back(child);
 }
 
-void Entity::RemoveChild(Entity* child)
+void BearBones::Entity::RemoveChild(Entity* child)
 {
 	m_pChildren.erase(
 		std::remove_if(m_pChildren.begin(), m_pChildren.end(), [child](auto fchild) { return fchild == child; })
 	);
 }
 
-void Entity::AttachChild(Entity* pChild, bool keepWorldTransform)
+void BearBones::Entity::AttachChild(Entity* pChild, bool keepWorldTransform)
 {
 	auto pChildTransform = pChild->GetTransform();
 
@@ -77,12 +77,12 @@ void Entity::AttachChild(Entity* pChild, bool keepWorldTransform)
 	}
 }
 
-void Entity::DetachChild(Entity* child)
+void BearBones::Entity::DetachChild(Entity* child)
 {
 	RemoveChild(child);
 }
 
-void Entity::SetParent(Entity* parent, bool keepWorldTransform)
+void BearBones::Entity::SetParent(Entity* parent, bool keepWorldTransform)
 {
 	if (parent == nullptr)
 		GetTransform()->SetWorldPosition(GetTransform()->GetWorldPosition());
@@ -111,7 +111,7 @@ void Entity::SetParent(Entity* parent, bool keepWorldTransform)
 	}
 }
 
-TransformComponent* Entity::GetTransform() const
+BearBones::TransformComponent* BearBones::Entity::GetTransform() const
 {
 	if (!m_TransformComponent)
 	{
@@ -121,59 +121,59 @@ TransformComponent* Entity::GetTransform() const
 	return m_TransformComponent;
 }
 
-Entity* Entity::GetParent() const
+BearBones::Entity* BearBones::Entity::GetParent() const
 {
 	return m_pParent;
 }
 
-const std::vector<Entity*>& Entity::GetChildren() const
+const std::vector<BearBones::Entity*>& BearBones::Entity::GetChildren() const
 {
 	return m_pChildren;
 }
 
-void Entity::SetActive(bool value)
+void BearBones::Entity::SetActive(bool value)
 {
 	m_IsActive = value;
 }
 
-bool Entity::IsActive() const
+bool BearBones::Entity::IsActive() const
 {
 	return m_IsActive;
 }
 
-void Entity::SetCanBeDestroyed(bool value)
+void BearBones::Entity::SetCanBeDestroyed(bool value)
 {
 	m_CanBeDestroyed = value;
 }
 
-bool Entity::CanBeDestroyed() const
+bool BearBones::Entity::CanBeDestroyed() const
 {
 	return m_CanBeDestroyed;
 }
 
-void Entity::MarkForDeletion()
+void BearBones::Entity::MarkForDeletion()
 {
 	m_MarkedForDeletion = true;
 }
 
-bool Entity::IsMarkedForDeletion() const
+bool BearBones::Entity::IsMarkedForDeletion() const
 {
 	return m_MarkedForDeletion;
 }
 
-void Entity::AddTag(const std::string& tag)
+void BearBones::Entity::AddTag(const std::string& tag)
 {
 	m_Tags.emplace_back(tag);
 }
 
-void Entity::RemoveTag(const std::string& tag)
+void BearBones::Entity::RemoveTag(const std::string& tag)
 {
 	m_Tags.erase(
 		std::remove_if(m_Tags.begin(), m_Tags.end(), [tag](auto ftag) { return ftag == tag; })
 	);
 }
 
-bool Entity::HasTag(const std::string& tag) const
+bool BearBones::Entity::HasTag(const std::string& tag) const
 {
 	return std::find(m_Tags.begin(), m_Tags.end(), tag) != m_Tags.end();
 }

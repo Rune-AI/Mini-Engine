@@ -2,11 +2,11 @@
 #include <SDL_ttf.h>
 #include "Font.h"
 
-TTF_Font* Font::GetFont() const {
+TTF_Font* BearBones::Font::GetFont() const {
 	return m_font;
 }
 
-Font::Font(const std::string& fullPath, unsigned int size) : m_font(nullptr), m_size(size)
+BearBones::Font::Font(const std::string& fullPath, unsigned int size) : m_font(nullptr), m_size(size)
 {
 	m_font = TTF_OpenFont(fullPath.c_str(), size);
 	if (m_font == nullptr) 
@@ -15,7 +15,7 @@ Font::Font(const std::string& fullPath, unsigned int size) : m_font(nullptr), m_
 	}
 }
 
-Font::~Font()
+BearBones::Font::~Font()
 {
 	TTF_CloseFont(m_font);
 }

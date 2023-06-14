@@ -1,20 +1,20 @@
 #include "Component.h"
 
-Entity* Component::GetOwner() const
+BearBones::Entity* BearBones::Component::GetOwner() const
 {
 	return m_pOwner;
 }
 
-void Component::SetCanBeRemoved(bool value)
+void BearBones::Component::SetCanBeRemoved(bool value)
 {
 	m_CanBeRemoved = value;
 }
 
-bool Component::GetCanBeRemoved()
+bool BearBones::Component::GetCanBeRemoved()
 {
 	return m_CanBeRemoved;
 }
 
-Component::~Component()
+BearBones::Component::~Component()
 {
 }

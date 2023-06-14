@@ -7,7 +7,7 @@
 #include "Font.h"
 #include "Entity.h"
 
-void ResourceManager::Init(const std::string& dataPath)
+void BearBones::ResourceManager::Init(const std::string& dataPath)
 {
 	m_dataPath = dataPath;
 
@@ -17,7 +17,7 @@ void ResourceManager::Init(const std::string& dataPath)
 	}
 }
 
-std::shared_ptr<Texture2D> ResourceManager::LoadTexture(const std::string& file)
+std::shared_ptr<BearBones::Texture2D> BearBones::ResourceManager::LoadTexture(const std::string& file)
 {
 	// unload any unused textures, we assume this function gets called when textures are being swapped, or the level is being loaded. So the poeration can take some time
 	// this function is not called every frame, so it's fine to do this here
@@ -46,18 +46,18 @@ std::shared_ptr<Texture2D> ResourceManager::LoadTexture(const std::string& file)
 	return m_LoadedTextures[fullPath];
 }
 
-std::shared_ptr<Font> ResourceManager::LoadFont(const std::string& file, unsigned int size) const
+std::shared_ptr < BearBones::Font > BearBones::ResourceManager::LoadFont(const std::string& file, unsigned int size) const
 {
 	return std::make_shared<Font>(m_dataPath + file, size);
 }
 
-std::string ResourceManager::LoadSound(const std::string& file) const
+std::string BearBones::ResourceManager::LoadSound(const std::string& file) const
 {
 	const auto fullPath = m_dataPath + file;
 	return fullPath;
 }
 
-void ResourceManager::UnloadUnusedTextures()
+void BearBones::ResourceManager::UnloadUnusedTextures()
 {
 	for (auto it = m_LoadedTextures.begin(); it != m_LoadedTextures.end();)
 	{

@@ -1,10 +1,9 @@
-#pragma once
 #include "InputManager.h"
 #include "imgui_impl_sdl2.h"
 #include <SDL.h>
 #include <Xinput.h>
 
-bool InputManager::ProcessInput()
+bool BearBones::InputManager::ProcessInput()
 {
 	SDL_Event e;
 	UpdateConsoleInput();
@@ -37,22 +36,22 @@ bool InputManager::ProcessInput()
 	return true;
 }
 
-XboxController* InputManager::GetController() const
+BearBones::XboxController* BearBones::InputManager::GetController() const
 {
 	return m_XboxController.get();
 }
 
-Keyboard* InputManager::GetKeyboard() const
+BearBones::Keyboard* BearBones::InputManager::GetKeyboard() const
 {
 	return m_Keyboard.get();
 }
 
-void InputManager::CreateController(int controllerIndex)
+void BearBones::InputManager::CreateController(int controllerIndex)
 {
 	m_XboxController = std::make_unique<XboxController>(controllerIndex);
 }
 
-void InputManager::UpdateComputerInput(SDL_Event event)
+void BearBones::InputManager::UpdateComputerInput(SDL_Event event)
 {
 	m_Keyboard->Update();
 
@@ -81,7 +80,7 @@ void InputManager::UpdateComputerInput(SDL_Event event)
 	}
 }
 
-void InputManager::UpdateConsoleInput()
+void BearBones::InputManager::UpdateConsoleInput()
 {
 	if (m_XboxController)
 	{

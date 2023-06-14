@@ -37,9 +37,6 @@
     <Filter Include="Engine\Services\Sound">
       <UniqueIdentifier>{a63e1436-134c-4444-a1d3-b8edd0f4021e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Services\Log">
-      <UniqueIdentifier>{8c289ca9-517d-4f8e-a809-a8dd88516a04}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\Services\Physics">
       <UniqueIdentifier>{5a344f52-b559-43bc-b21e-4b3860247719}</UniqueIdentifier>
     </Filter>
@@ -144,9 +141,6 @@
     <ClInclude Include="SDLSoundSystem.h">
       <Filter>Engine\Services\Sound</Filter>
     </ClInclude>
-    <ClInclude Include="LogService.h">
-      <Filter>Engine\Services\Log</Filter>
-    </ClInclude>
     <ClInclude Include="RigidBody2DComponent.h">
       <Filter>Engine\ECS\Components</Filter>
     </ClInclude>
@@ -158,6 +152,9 @@
     </ClInclude>
     <ClInclude Include="Keyboard.h">
       <Filter>Engine\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundLogger.h">
+      <Filter>Engine\Services\Sound</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -221,9 +218,6 @@
     <ClCompile Include="TextComponent.cpp">
       <Filter>Engine\ECS\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Command.cpp">
-      <Filter>Engine\Input\Commands</Filter>
-    </ClCompile>
     <ClCompile Include="InputManager.cpp">
       <Filter>Engine\Input</Filter>
     </ClCompile>
@@ -245,9 +239,6 @@
     <ClCompile Include="SDLSoundSystem.cpp">
       <Filter>Engine\Services\Sound</Filter>
     </ClCompile>
-    <ClCompile Include="LogService.cpp">
-      <Filter>Engine\Services\Log</Filter>
-    </ClCompile>
     <ClCompile Include="RigidBody2DComponent.cpp">
       <Filter>Engine\ECS\Components</Filter>
     </ClCompile>
@@ -256,6 +247,9 @@
     </ClCompile>
     <ClCompile Include="Keyboard.cpp">
       <Filter>Engine\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundLogger.cpp">
+      <Filter>Engine\Services\Sound</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

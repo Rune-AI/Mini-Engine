@@ -23,7 +23,7 @@ int GetOpenGLDriverIndex()
 	return openglIndex;
 }
 
-void Renderer::Init(SDL_Window* window)
+void BearBones::Renderer::Init(SDL_Window* window)
 {
 	m_window = window;
 	m_renderer = SDL_CreateRenderer(window, GetOpenGLDriverIndex(), SDL_RENDERER_ACCELERATED);
@@ -38,7 +38,7 @@ void Renderer::Init(SDL_Window* window)
 	ImGui_ImplOpenGL2_Init();
 }
 
-void Renderer::Render()
+void BearBones::Renderer::Render()
 {
 	const auto& color = GetBackgroundColor();
 	SDL_SetRenderDrawColor(m_renderer, color.r, color.g, color.b, color.a);
@@ -51,7 +51,7 @@ void Renderer::Render()
 	SDL_RenderPresent(m_renderer);
 }
 
-void Renderer::RenderImGui()
+void BearBones::Renderer::RenderImGui()
 {
 	ImGui_ImplOpenGL2_NewFrame();
 	ImGui_ImplSDL2_NewFrame(m_window);
@@ -63,7 +63,7 @@ void Renderer::RenderImGui()
 	ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());
 }
 
-void Renderer::Destroy()
+void BearBones::Renderer::Destroy()
 {
 	ImGui_ImplOpenGL2_Shutdown();
 	ImGui_ImplSDL2_Shutdown();
@@ -76,7 +76,7 @@ void Renderer::Destroy()
 	}
 }
 
-void Renderer::RenderTexture(const Texture2D& texture, const float x, const float y) const
+void BearBones::Renderer::RenderTexture(const Texture2D& texture, const float x, const float y) const
 {
 	SDL_Rect dst{};
 	dst.x = static_cast<int>(x);
@@ -85,7 +85,7 @@ void Renderer::RenderTexture(const Texture2D& texture, const float x, const floa
 	SDL_RenderCopy(GetSDLRenderer(), texture.GetSDLTexture(), nullptr, &dst);
 }
 
-void Renderer::RenderTexture(const Texture2D& texture, const float x, const float y, const float width, const float height) const
+void BearBones::Renderer::RenderTexture(const Texture2D& texture, const float x, const float y, const float width, const float height) const
 {
 	SDL_Rect dst{};
 	dst.x = static_cast<int>(x);
@@ -95,7 +95,7 @@ void Renderer::RenderTexture(const Texture2D& texture, const float x, const floa
 	SDL_RenderCopy(GetSDLRenderer(), texture.GetSDLTexture(), nullptr, &dst);
 }
 
-void Renderer::RenderTextureEx(const Texture2D& texture, const float x, const float y, const float angle, const SDL_RendererFlip flip) const
+void BearBones::Renderer::RenderTextureEx(const Texture2D& texture, const float x, const float y, const float angle, const SDL_RendererFlip flip) const
 {
 	SDL_Rect dst{};
 	dst.x = static_cast<int>(x);
@@ -104,7 +104,7 @@ void Renderer::RenderTextureEx(const Texture2D& texture, const float x, const fl
 	SDL_RenderCopyEx(GetSDLRenderer(), texture.GetSDLTexture(), nullptr, &dst, double(angle), nullptr, flip);
 }
 
-void Renderer::RenderTextureEx(const Texture2D& texture, const float x, const float y, const float width, const float height, const float angle, const SDL_RendererFlip flip) const
+void BearBones::Renderer::RenderTextureEx(const Texture2D& texture, const float x, const float y, const float width, const float height, const float angle, const SDL_RendererFlip flip) const
 {
 	SDL_Rect dst{};
 	dst.x = static_cast<int>(x);
@@ -114,7 +114,7 @@ void Renderer::RenderTextureEx(const Texture2D& texture, const float x, const fl
 	SDL_RenderCopyEx(GetSDLRenderer(), texture.GetSDLTexture(), nullptr, &dst, double(angle), nullptr, flip);
 }
 
-void Renderer::RenderTextureEx(const Texture2D& texture, const float x, const float y, const float angle, const SDL_RendererFlip flip, const float scaleX, const float scaleY) const
+void BearBones::Renderer::RenderTextureEx(const Texture2D& texture, const float x, const float y, const float angle, const SDL_RendererFlip flip, const float scaleX, const float scaleY) const
 {
 	SDL_Rect dst{};
 	dst.x = static_cast<int>(x);
@@ -125,4 +125,4 @@ void Renderer::RenderTextureEx(const Texture2D& texture, const float x, const fl
 	SDL_RenderCopyEx(GetSDLRenderer(), texture.GetSDLTexture(), nullptr, &dst, double(angle), nullptr, flip);
 }
 
-inline SDL_Renderer* Renderer::GetSDLRenderer() const { return m_renderer; }
+inline SDL_Renderer* BearBones::Renderer::GetSDLRenderer() const { return m_renderer; }

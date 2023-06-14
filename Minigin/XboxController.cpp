@@ -1,4 +1,3 @@
-
 #include "XboxController.h"
 #include <Xinput.h>
 #include "InputManager.h"
@@ -6,7 +5,7 @@
 
 
 
-class XboxController::XboxControllerImpl
+class BearBones::XboxController::XboxControllerImpl
 {
 public:
 	void Update()
@@ -112,51 +111,51 @@ private:
 	ControllerCommandsMap m_ConsoleCommands{};
 };
 
-XboxController::XboxController(int)
+BearBones::XboxController::XboxController(int)
 	:pImpl{ std::make_unique<XboxControllerImpl>() }
 {
 }
 
-XboxController::~XboxController()
+BearBones::XboxController::~XboxController()
 {
 }
 
-void XboxController::Update()
+void BearBones::XboxController::Update()
 {
 	pImpl->Update();
 }
 
-bool XboxController::IsDownThisFrame(unsigned int button) const
+bool BearBones::XboxController::IsDownThisFrame(unsigned int button) const
 {
 	return pImpl->IsDownThisFrame(button);
 }
 
-bool XboxController::IsUpThisFrame(unsigned int button) const
+bool BearBones::XboxController::IsUpThisFrame(unsigned int button) const
 {
 	return pImpl->IsUpThisFrame(button);
 }
 
-bool XboxController::IsPressed(unsigned int button) const
+bool BearBones::XboxController::IsPressed(unsigned int button) const
 {
 	return pImpl->IsPressed(button);
 }
 
-float XboxController::GetLeftTrigger() const
+float BearBones::XboxController::GetLeftTrigger() const
 {
 	return pImpl->GetLeftTrigger();
 }
 
-float XboxController::GetRightTrigger() const
+float BearBones::XboxController::GetRightTrigger() const
 {
 	return pImpl->GetRightTrigger();
 }
 
-glm::vec2 XboxController::GetLeftThumbStick() const
+glm::vec2 BearBones::XboxController::GetLeftThumbStick() const
 {
 	return pImpl->GetLeftThumbStick();
 }
 
-glm::vec2 XboxController::GetRightThumbStick() const
+glm::vec2 BearBones::XboxController::GetRightThumbStick() const
 {
 	return pImpl->GetRightThumbStick();
 }

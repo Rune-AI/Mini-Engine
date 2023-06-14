@@ -3,17 +3,17 @@
 #include "Entity.h"
 #include "TransformComponent.h"
 
-PhysicsService::PhysicsService()
+BearBones::PhysicsService::PhysicsService()
 {
 	m_PhysicsThread = std::jthread(&PhysicsService::PhysicsLoop, this);
 }
 
-PhysicsService::~PhysicsService()
+BearBones::PhysicsService::~PhysicsService()
 {
 	HaltPhysics();
 }
 
-void PhysicsService::AddRigidBody(RigidBody2DComponent* rb)
+void BearBones::PhysicsService::AddRigidBody(RigidBody2DComponent* rb)
 {
 	std::unique_lock<std::mutex> lock(m_PhysicsMutex);
 
@@ -22,7 +22,7 @@ void PhysicsService::AddRigidBody(RigidBody2DComponent* rb)
 	m_PhysicsCondition.notify_one();
 }
 
-void PhysicsService::CleanAll()
+void BearBones::PhysicsService::CleanAll()
 {
 	std::unique_lock<std::mutex> lock(m_PhysicsMutex);
 
@@ -35,7 +35,7 @@ void PhysicsService::CleanAll()
 	m_NewBodies.clear();
 }
 
-void PhysicsService::Update()
+void BearBones::PhysicsService::Update()
 {
 	m_BodiesToErase.clear();
 
@@ -119,7 +119,7 @@ void PhysicsService::Update()
     }
 }
 
-void PhysicsService::PhysicsLoop()
+void BearBones::PhysicsService::PhysicsLoop()
 {
     while (true)
     {
@@ -166,7 +166,7 @@ void PhysicsService::PhysicsLoop()
     }
 }
 
-void PhysicsService::HaltPhysics()
+void BearBones::PhysicsService::HaltPhysics()
 {
     m_stopRequested = true;
     m_PhysicsCondition.notify_one();

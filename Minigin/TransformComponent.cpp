@@ -1,12 +1,12 @@
 #include "TransformComponent.h"
 #include "Entity.h"
 
-TransformComponent::TransformComponent(Entity* pOwner)
+BearBones::TransformComponent::TransformComponent(Entity* pOwner)
 	: Component( pOwner )
 {
 }
 
-TransformComponent::TransformComponent(Entity* pOwner, glm::vec2 position, float rotation, glm::vec2 scale)
+BearBones::TransformComponent::TransformComponent(Entity* pOwner, glm::vec2 position, float rotation, glm::vec2 scale)
 	: Component{ pOwner }
 	, m_worldPosition{ position }
 	, m_worldRotation{ rotation }
@@ -14,20 +14,20 @@ TransformComponent::TransformComponent(Entity* pOwner, glm::vec2 position, float
 {
 }
 
-void TransformComponent::Update()
+void BearBones::TransformComponent::Update()
 {
 	UpdateWorldTransform();
 }
 
-void TransformComponent::Render() const
+void BearBones::TransformComponent::Render() const
 {
 }
 
-void TransformComponent::RenderImGui()
+void BearBones::TransformComponent::RenderImGui()
 {
 }
 
-void TransformComponent::SetWorldPosition(const glm::vec2& position)
+void BearBones::TransformComponent::SetWorldPosition(const glm::vec2& position)
 {
 	if (m_pOwner->GetParent())
 	{
@@ -42,23 +42,23 @@ void TransformComponent::SetWorldPosition(const glm::vec2& position)
 	m_positionDirty = false;
 }
 
-void TransformComponent::SetWorldPosition(float x, float y)
+void BearBones::TransformComponent::SetWorldPosition(float x, float y)
 {
 	SetWorldPosition(glm::vec2(x, y));
 }
 
-void TransformComponent::SetLocalPosition(const glm::vec2& position)
+void BearBones::TransformComponent::SetLocalPosition(const glm::vec2& position)
 {
 	m_localPosition = position;
 	SetPositionDirty();
 }
 
-void TransformComponent::SetLocalPosition(float x, float y)
+void BearBones::TransformComponent::SetLocalPosition(float x, float y)
 {
 	SetLocalPosition(glm::vec2(x, y));
 }
 
-const glm::vec2& TransformComponent::GetWorldPosition()
+const glm::vec2& BearBones::TransformComponent::GetWorldPosition()
 {
 	if (m_positionDirty)
 	{
@@ -67,17 +67,17 @@ const glm::vec2& TransformComponent::GetWorldPosition()
 	return m_worldPosition;
 }
 
-const glm::vec2& TransformComponent::GetLocalPosition() const
+const glm::vec2& BearBones::TransformComponent::GetLocalPosition() const
 {
 	return m_localPosition;
 }
 
-void TransformComponent::SetPositionDirty()
+void BearBones::TransformComponent::SetPositionDirty()
 {
 	m_positionDirty = true;
 }
 
-void TransformComponent::SetWorldRotation(float rotation)
+void BearBones::TransformComponent::SetWorldRotation(float rotation)
 {
 	if (m_pOwner->GetParent())
 	{
@@ -90,13 +90,13 @@ void TransformComponent::SetWorldRotation(float rotation)
 	m_rotationDirty = false;
 }
 
-void TransformComponent::SetLocalRotation(float rotation)
+void BearBones::TransformComponent::SetLocalRotation(float rotation)
 {
 	m_localRotation = rotation;
 	SetRotationDirty();
 }
 
-float TransformComponent::GetWorldRotation()
+float BearBones::TransformComponent::GetWorldRotation()
 {
 	if (m_rotationDirty)
 	{
@@ -105,12 +105,12 @@ float TransformComponent::GetWorldRotation()
 	return m_worldRotation;
 }
 
-float TransformComponent::GetLocalRotation() const
+float BearBones::TransformComponent::GetLocalRotation() const
 {
 	return m_localRotation;
 }
 
-void TransformComponent::SetWorldScale(const glm::vec2& scale)
+void BearBones::TransformComponent::SetWorldScale(const glm::vec2& scale)
 {
 	if (m_pOwner->GetParent())
 	{
@@ -123,23 +123,23 @@ void TransformComponent::SetWorldScale(const glm::vec2& scale)
 	m_scaleDirty = false;
 }
 
-void TransformComponent::SetWorldScale(float x, float y)
+void BearBones::TransformComponent::SetWorldScale(float x, float y)
 {
 	SetWorldScale(glm::vec2(x, y));
 }
 
-void TransformComponent::SetLocalScale(const glm::vec2& scale)
+void BearBones::TransformComponent::SetLocalScale(const glm::vec2& scale)
 {
 	m_localScale = scale;
 	SetScaleDirty();
 }
 
-void TransformComponent::SetLocalScale(float x, float y)
+void BearBones::TransformComponent::SetLocalScale(float x, float y)
 {
 	SetLocalScale(glm::vec2(x, y));
 }
 
-const glm::vec2& TransformComponent::GetWorldScale()
+const glm::vec2& BearBones::TransformComponent::GetWorldScale()
 {
 	if (m_scaleDirty)
 	{
@@ -148,22 +148,22 @@ const glm::vec2& TransformComponent::GetWorldScale()
 	return m_worldScale;
 }
 
-const glm::vec2& TransformComponent::GetLocalScale() const
+const glm::vec2& BearBones::TransformComponent::GetLocalScale() const
 {
 	return m_localScale;
 }
 
-void TransformComponent::SetRotationDirty()
+void BearBones::TransformComponent::SetRotationDirty()
 {
 	m_rotationDirty = true;
 }
 
-void TransformComponent::SetScaleDirty()
+void BearBones::TransformComponent::SetScaleDirty()
 {
 	m_scaleDirty = true;
 }
 
-void TransformComponent::SetDirty()
+void BearBones::TransformComponent::SetDirty()
 {
 	SetPositionDirty();
 	SetRotationDirty();
@@ -171,7 +171,7 @@ void TransformComponent::SetDirty()
 }
 
 
-void TransformComponent::UpdateWorldPosition()
+void BearBones::TransformComponent::UpdateWorldPosition()
 {
 	const auto pParent = m_pOwner->GetParent();
 	if (pParent)
@@ -193,7 +193,7 @@ void TransformComponent::UpdateWorldPosition()
 	m_positionDirty = false;
 }
 
-void TransformComponent::UpdateWorldRotation()
+void BearBones::TransformComponent::UpdateWorldRotation()
 {
 	const auto pParent = m_pOwner->GetParent();
 	if (pParent)
@@ -214,7 +214,7 @@ void TransformComponent::UpdateWorldRotation()
 	m_rotationDirty = false;
 }
 
-void TransformComponent::UpdateWorldScale()
+void BearBones::TransformComponent::UpdateWorldScale()
 {
 	const auto pParent = m_pOwner->GetParent();
 	if (pParent)
@@ -235,7 +235,7 @@ void TransformComponent::UpdateWorldScale()
 	m_scaleDirty = false;
 }
 
-void TransformComponent::UpdateWorldTransform()
+void BearBones::TransformComponent::UpdateWorldTransform()
 {
 	if (m_positionDirty)
 	{

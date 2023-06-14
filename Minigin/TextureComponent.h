@@ -1,32 +1,36 @@
-#pragma once
+#ifndef TEXTURE_COMPONENT_H
+#define TEXTURE_COMPONENT_H
+
 #include <memory>
 #include <string>
 #include "Component.h"
 #include "Texture2D.h"
 
-class TextureComponent final : public Component
+namespace BearBones
 {
-public:
-	TextureComponent(Entity* object);
-	TextureComponent(Entity* object, const std::string& textureFile);
-	TextureComponent(Entity* object, std::shared_ptr<Texture2D> texture);
+	class TextureComponent final : public Component
+	{
+	public:
+		TextureComponent(Entity* object);
+		TextureComponent(Entity* object, const std::string& textureFile);
+		TextureComponent(Entity* object, std::shared_ptr<Texture2D> texture);
 
-	virtual ~TextureComponent();
-	TextureComponent(const TextureComponent& other) = delete;
-	TextureComponent(TextureComponent&& other) = delete;
-	TextureComponent& operator=(const TextureComponent& other) = delete;
-	TextureComponent& operator=(TextureComponent&& other) = delete;
-	
-	virtual void Update() override;
-	virtual void Render() const override;
-	virtual void RenderImGui() override;
-	
-	void SetTexture(const std::string& filename);
-	glm::ivec2 GetTextureSize() const { return m_pTexture->GetSize(); }
+		virtual ~TextureComponent();
+		TextureComponent(const TextureComponent& other) = delete;
+		TextureComponent(TextureComponent&& other) = delete;
+		TextureComponent& operator=(const TextureComponent& other) = delete;
+		TextureComponent& operator=(TextureComponent&& other) = delete;
 
-private:
-	std::shared_ptr<Texture2D> m_pTexture{};
-};
+		virtual void Update() override;
+		virtual void Render() const override;
+		virtual void RenderImGui() override;
 
+		void SetTexture(const std::string& filename);
+		glm::ivec2 GetTextureSize() const { return m_pTexture->GetSize(); }
 
+	private:
+		std::shared_ptr<Texture2D> m_pTexture{};
+	};
+}
 
+#endif //TEXTURE_COMPONENT_H

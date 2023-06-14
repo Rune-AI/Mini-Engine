@@ -3,28 +3,28 @@
 #include "Scene.h"
 #include "Entity.h"
 
-unsigned int Scene::m_idCounter = 0;
+unsigned int BearBones::Scene::m_idCounter = 0;
 
-Scene::Scene(const std::string& name) : m_name(name) {}
+BearBones::Scene::Scene(const std::string& name) : m_name(name) {}
 
-Scene::~Scene() = default;
+BearBones::Scene::~Scene() = default;
 
-void Scene::Add(std::unique_ptr<Entity> object)
+void BearBones::Scene::Add(std::unique_ptr<Entity> object)
 {
 	m_objects.emplace_back(std::move(object));
 }
 
-void Scene::Remove(std::unique_ptr<Entity> object)
+void BearBones::Scene::Remove(std::unique_ptr<Entity> object)
 {
 	m_objects.erase(std::remove(m_objects.begin(), m_objects.end(), object), m_objects.end());
 }
 
-void Scene::RemoveAll()
+void BearBones::Scene::RemoveAll()
 {
 	m_objects.clear();
 }
 
-void Scene::Update()
+void BearBones::Scene::Update()
 {
 	if (!IsActive) return;
 
@@ -34,7 +34,7 @@ void Scene::Update()
 	}
 }
 
-void Scene::Render() const
+void BearBones::Scene::Render() const
 {
 	if (!IsActive) return;
 
@@ -44,7 +44,7 @@ void Scene::Render() const
 	}
 }
 
-void Scene::RenderImGui()
+void BearBones::Scene::RenderImGui()
 {
 	if (!IsActive) return;
 

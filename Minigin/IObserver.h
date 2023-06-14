@@ -1,9 +1,14 @@
-#pragma once
+#ifndef OBSERVER_INTERFACE_H
+#define OBSERVER_INTERFACE_H
 
-template<typename T>
-class IObserver
+namespace BearBones
 {
-public:
-	virtual void OnNotify(T data) = 0;
-	virtual IObserver<T>* GetObserver() = 0;
-};
+	template<typename T>
+	class IObserver
+	{
+	public:
+		virtual void OnNotify(T data) = 0;
+		virtual IObserver<T>* GetObserver() = 0;
+	};
+}
+#endif //OBSERVER_INTERFACE_H

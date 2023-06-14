@@ -1,16 +1,16 @@
 #include "EngineTime.h"
 
-void Time::Update(float deltaTime)
+void BearBones::Time::Update(float deltaTime)
 {
 	m_DeltaTime = deltaTime;
 }
 
-float Time::GetDeltaTime() const
+float BearBones::Time::GetDeltaTime() const
 {
 	return m_DeltaTime;
 }
 
-double Time::GetElapsedTime() const
+double BearBones::Time::GetElapsedTime() const
 {
 	return m_ElapsedTime;
 }

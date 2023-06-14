@@ -2,7 +2,7 @@
 #include "SceneManager.h"
 #include "Scene.h"
 
-void SceneManager::Update()
+void BearBones::SceneManager::Update()
 {
 	for(auto& scene : m_scenes)
 	{
@@ -10,7 +10,7 @@ void SceneManager::Update()
 	}
 }
 
-void SceneManager::Render()
+void BearBones::SceneManager::Render()
 {
 	for (const auto& scene : m_scenes)
 	{
@@ -18,7 +18,7 @@ void SceneManager::Render()
 	}
 }
 
-void SceneManager::RenderImGui()
+void BearBones::SceneManager::RenderImGui()
 {
 	for (const auto& scene : m_scenes)
 	{
@@ -26,7 +26,7 @@ void SceneManager::RenderImGui()
 	}
 }
 
-Scene* SceneManager::GetScene(std::string name) const
+BearBones::Scene* BearBones::SceneManager::GetScene(std::string name) const
 {
 	for(const auto& scene : m_scenes)
 	{
@@ -38,7 +38,7 @@ Scene* SceneManager::GetScene(std::string name) const
 	return nullptr;
 }
 
-Scene& SceneManager::CreateScene(const std::string& name)
+BearBones::Scene& BearBones::SceneManager::CreateScene(const std::string& name)
 {
 	//const auto& scene = std::unique_ptr<Scene>(std::make_unique<Scene>(name));
 	m_scenes.push_back(std::make_unique<Scene>(name));

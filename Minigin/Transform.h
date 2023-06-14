@@ -1,7 +1,9 @@
-#pragma once
+#ifndef TRANSFORM_H
+#define TRANSFORM_H
+
 #include <glm/glm.hpp>
 
-namespace dae
+namespace BearBones
 {
 	class Transform final
 	{
@@ -12,3 +14,5 @@ namespace dae
 		glm::vec3 m_position;
 	};
 }
+
+#endif //TRANSFORM_H
