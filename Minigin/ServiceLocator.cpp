@@ -1,34 +1,34 @@
 #include "ServiceLocator.h"
 #include "ISoundService.h"
 
-ISoundService* ServiceLocator::m_soundService{ &m_defaultSoundService };
-IPhysicsService* ServiceLocator::m_physicsService{&m_defaultPhysicsService};
+BearBones::ISoundService* BearBones::ServiceLocator::m_soundService{ &m_defaultSoundService };
+IPhysicsService* BearBones::ServiceLocator::m_physicsService{&m_defaultPhysicsService};
 
-void ServiceLocator::RegisterSoundService(ISoundService* soundService)
+void BearBones::ServiceLocator::RegisterSoundService(ISoundService* soundService)
 {
     m_soundService = (soundService == nullptr)
         ? &m_defaultSoundService
         : soundService;
 }
 
-void ServiceLocator::RegisterPhysicsService(IPhysicsService* physicsService)
+void BearBones::ServiceLocator::RegisterPhysicsService(IPhysicsService* physicsService)
 {
     m_physicsService = (physicsService == nullptr)
         ? &m_defaultPhysicsService
         : physicsService;
 }
 
-ISoundService* ServiceLocator::GetSoundService()
+BearBones::ISoundService* BearBones::ServiceLocator::GetSoundService()
 {
     return m_soundService;
 }
 
-IPhysicsService* ServiceLocator::GetPhysicsService()
+IPhysicsService* BearBones::ServiceLocator::GetPhysicsService()
 {
     return m_physicsService;
 }
 
-void ServiceLocator::DestroyServices()
+void BearBones::ServiceLocator::DestroyServices()
 {
     if (m_soundService != &m_defaultSoundService)
     {

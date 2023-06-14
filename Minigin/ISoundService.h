@@ -1,19 +1,29 @@
-#pragma once
+#ifndef SOUND_SERVICE_INTERFACE_H
+#define SOUND_SERVICE_INTERFACE_H
+
 #include <string>
 
-class ISoundService
+namespace BearBones
 {
-public:
-    virtual ~ISoundService() = default;
-    virtual void Play(const std::string& soundName, const float volume) = 0;
-};
+    class ISoundService
+    {
+    public:
+        virtual ~ISoundService() = default;
 
-class NullSoundService final : public ISoundService
-{
-public:
-    NullSoundService() = default;
-    ~NullSoundService() = default;
+        virtual void Play(const std::string& soundName, const float volume) = 0;
+        virtual void SetVolume(const std::string& soundName, const float volume)= 0;
+        virtual void SetPauze(const std::string& soundName, bool isPauzed) = 0;
+    };
 
-    // funky trick
-    void Play(const std::string& /*soundName*/, const float /*volume*/) override {};
-};
+    class NullSoundService final : public ISoundService
+    {
+    public:
+        NullSoundService() = default;
+        ~NullSoundService() = default;
+
+        void Play(const std::string& /*soundName*/, const float /*volume*/) override {};
+        void SetVolume(const std::string& /*soundName*/, const float /*volume*/) override {};
+        void SetPauze(const std::string& /*soundName*/, bool /*isPauzed*/) override {};
+    };
+}
+#endif // SOUND_SERVICE_INTERFACE
