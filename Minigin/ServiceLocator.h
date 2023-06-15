@@ -1,7 +1,6 @@
 #ifndef SERVICE_LOCATOR_H
 #define SERVICE_LOCATOR_H
 
-#include "IPhysicsService.h"
 #include "ISoundService.h"
 
 namespace BearBones
@@ -15,9 +14,7 @@ namespace BearBones
         ServiceLocator& operator=(ServiceLocator&& other) = delete;
 
         static void RegisterSoundService(ISoundService* soundService);
-        static void RegisterPhysicsService(IPhysicsService* physicsService);
         static ISoundService* GetSoundService();
-        static IPhysicsService* GetPhysicsService();
 
         static void DestroyServices();
 
@@ -27,9 +24,6 @@ namespace BearBones
 
         inline static NullSoundService m_defaultSoundService{};
         static ISoundService* m_soundService;
-
-        inline static NullPhysicsService m_defaultPhysicsService{};
-        static IPhysicsService* m_physicsService;
     };
 }
 

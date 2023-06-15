@@ -1,6 +1,6 @@
 #include "RigidBody2DComponent.h"
 #include "ServiceLocator.h"
-#include "PhysicsService.h"
+//#include "PhysicsService.h"
 #include "Entity.h"
 
 BearBones::RigidBody2DComponent::RigidBody2DComponent(Entity* object, const float width, const float height)

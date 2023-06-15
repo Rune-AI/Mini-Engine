@@ -144,12 +144,6 @@
     <ClInclude Include="RigidBody2DComponent.h">
       <Filter>Engine\ECS\Components</Filter>
     </ClInclude>
-    <ClInclude Include="IPhysicsService.h">
-      <Filter>Engine\Services\Physics</Filter>
-    </ClInclude>
-    <ClInclude Include="PhysicsService.h">
-      <Filter>Engine\Services\Physics</Filter>
-    </ClInclude>
     <ClInclude Include="Keyboard.h">
       <Filter>Engine\Input</Filter>
     </ClInclude>
@@ -241,9 +235,6 @@
     </ClCompile>
     <ClCompile Include="RigidBody2DComponent.cpp">
       <Filter>Engine\ECS\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="PhysicsService.cpp">
-      <Filter>Engine\Services\Physics</Filter>
     </ClCompile>
     <ClCompile Include="Keyboard.cpp">
       <Filter>Engine\Input</Filter>

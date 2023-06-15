@@ -241,11 +241,9 @@ xcopy "$(SolutionDir)3rdParty\SDL2_mixer\lib\$(PlatformTarget)\*.dll" "$(OutputP
     <ClInclude Include="Font.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="IObserver.h" />
-    <ClInclude Include="IPhysicsService.h" />
     <ClInclude Include="ISoundService.h" />
     <ClInclude Include="Keyboard.h" />
     <ClInclude Include="Minigin.h" />
-    <ClInclude Include="PhysicsService.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="RigidBody2DComponent.h" />
@@ -280,7 +278,6 @@ xcopy "$(SolutionDir)3rdParty\SDL2_mixer\lib\$(PlatformTarget)\*.dll" "$(OutputP
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Keyboard.cpp" />
     <ClCompile Include="Minigin.cpp" />
-    <ClCompile Include="PhysicsService.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="RigidBody2DComponent.cpp" />
