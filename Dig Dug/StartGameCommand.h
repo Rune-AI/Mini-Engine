@@ -2,10 +2,10 @@
 #define START_COMMAND_H
 
 #include <Command.h>
-class StartGameCommand final : public Command
+class StartGameCommand final : public BearBones::Command
 {
 public:
-	StartGameCommand(Entity* obj) : Command{ obj } {};
+	StartGameCommand(BearBones::Entity* obj) : Command{ obj } {};
 	virtual void Execute() override;
 };
 

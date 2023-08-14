@@ -10,8 +10,6 @@
 #include "InputManager.h"
 #include "ServiceLocator.h"
 #include "SDLSoundSystem.h"
-#include "LogService.h"
-#include "PhysicsService.h"
 
 #include <iostream>
 
@@ -31,6 +29,8 @@
 #include "FygarComponent.h"
 #include "StageLoader.h"
 #include "StartGameCommand.h"
+
+#include <SDLSoundSystem.h>
 
 
 constexpr auto windowWidth = 640;
@@ -52,19 +52,17 @@ void printControls()
 }
 
 
+using namespace BearBones;
+
 Scene* createMenuScene()
 {
 	auto& scene = SceneManager::GetInstance().CreateScene("MainMenu");
 
 	auto background = std::make_unique<Entity>();
-	//background->AddComponent<TextureComponent>("background.tga");
-
-	auto anchor = std::make_unique<Entity>();
-	anchor->GetTransform()->SetLocalPosition(0.f, windowHeight); //bottom of the page so it can move up
-	anchor->AddComponent<DigDug::LerpTranslateComponent>(0.f, 0.f, 2.f);
+	background->AddComponent<TextureComponent>("background.tga");
 
 	auto logo = std::make_unique<Entity>();
-	logo->AddComponent<TextureComponent>("Resources/Sprites/Logo.png");
+	logo->AddComponent<BearBones::TextureComponent>("Resources/Sprites/Logo.png");
 	int logoWidth = logo->GetComponent<TextureComponent>()->GetTextureSize().x;
 	logo->GetTransform()->SetLocalPosition(windowWidth/2.f - logoWidth/2.f, 50.f);
 
@@ -72,114 +70,16 @@ Scene* createMenuScene()
 	auto font = ResourceManager::GetInstance().LoadFont("Lingua.otf", 24);
 
 	auto playButton = std::make_unique<Entity>();
-	playButton->AddComponent<TextComponent>("Press ENTER/START To Start", font);
+	playButton->AddComponent<TextComponent>("SOLO", font);
 	playButton->GetTransform()->SetLocalPosition(windowWidth / 2.f - logoWidth / 2.f - 50.f, 200.f);
-
-	anchor->AttachChild(logo.get(), false);
-	anchor->AttachChild(playButton.get(), false);
 
 	InputManager::GetInstance().CreateDesktopCommand<StartGameCommand>(SDL_SCANCODE_RETURN, InputState::Press, playButton.get());
 	InputManager::GetInstance().CreateConsoleCommand<StartGameCommand>(XINPUT_GAMEPAD_START, InputState::Press, playButton.get());
 
 	scene.Add(std::move(background));
-	scene.Add(std::move(anchor));
 	scene.Add(std::move(logo));
 	scene.Add(std::move(playButton));
 
-
-
-	return &scene;
-}
-
-
-Scene* createGameScene()
-{
-	// has all the lives, UI, etc
-	auto& scene = SceneManager::GetInstance().CreateScene("Game");
-
-	auto background = std::make_unique<Entity>();
-	//background->AddComponent<TextureComponent>("background.tga");
-
-	scene.Add(std::move(background));
-
-	return &scene;
-}
-
-
-Scene* createLevelScene()
-{
-	// has all the enemies, players, level, etc
-	DigDug::StageLoader loader {};
-	DigDug::Stage stage {};
-	loader.LoadStage("Data/Resources/Levels/Stage_0.json", stage);
-
-	auto& scene = SceneManager::GetInstance().CreateScene(stage.name);
-
-	const float scaleX = windowWidth / (float(stage.cols + 4) * 16);
-	const float scaleY = windowHeight / (float(stage.rows) * 16);
-
-	const float scaledWidth = scaleX * 16;
-	const float scaledHeight = scaleY * 16;
-
-	auto sceneRoot = std::make_unique<Entity>();
-	sceneRoot->GetTransform()->SetLocalScale(scaleX, scaleY);
-
-
-	auto level = std::make_unique<Entity>();
-	sceneRoot->AttachChild(level.get(), true);
-	level->AddComponent<DigDug::LevelComponent>(stage);
-	scene.Add(std::move(level));
-
-
-	for (auto pos : stage.rocks)
-	{
-		auto rock = std::make_unique<Entity>();
-		sceneRoot->AttachChild(rock.get(), false);
-		float posX = (pos.col) * scaledWidth;
-		float posY = (pos.row) * scaledHeight;
-		rock->GetTransform()->SetLocalPosition(posX, posY);
-		rock->AddComponent<TextureComponent>("Resources/Sprites/Enemies/Rock/0.png");
-		scene.Add(std::move(rock));
-	}
-	
-	for (auto pos : stage.pookas)
-	{
-		auto pooka = std::make_unique<Entity>();
-		sceneRoot->AttachChild(pooka.get(), false);
-		float posX = (pos.col) * scaledWidth;
-		float posY = (pos.row) * scaledHeight;
-		pooka->GetTransform()->SetLocalPosition(posX, posY);
-		pooka->AddComponent<DigDug::PookaComponent>();
-		scene.Add(std::move(pooka));
-	}
-
-	for (auto pos : stage.fygars)
-	{
-		auto fygars = std::make_unique<Entity>();
-		sceneRoot->AttachChild(fygars.get(), false);
-		float posX = (pos.col) * scaledWidth;
-		float posY = (pos.row) * scaledHeight;
-		fygars->GetTransform()->SetLocalPosition(posX, posY);
-		fygars->AddComponent<DigDug::FygarComponent>();
-		scene.Add(std::move(fygars));
-	}
-
-
-	auto player = std::make_unique<Entity>();
-	sceneRoot->AttachChild(player.get(), true);
-	//playerRoot->GetTransform()->SetLocalPosition(50.f, 50.f);
-	player->AddComponent<DigDug::Player>();
-
-
-	InputManager::GetInstance().CreateController(0);
-
-	InputManager::GetInstance().CreateDesktopCommand<PumpCommand>(SDL_SCANCODE_SPACE, InputState::Press, player.get());
-	InputManager::GetInstance().CreateConsoleCommand<PumpCommand>(XINPUT_GAMEPAD_A, InputState::Press, player.get());
-
-	
-	scene.Add(std::move(sceneRoot));
-	
-	scene.Add(std::move(player));
 	return &scene;
 }
 
@@ -187,31 +87,18 @@ void load()
 {
 	printControls();
 	auto menuScene = createMenuScene();
-	auto gameScene = createGameScene();
-	auto levelScene = createLevelScene();
-
-	gameScene->SetIsActive(false);
-	levelScene->SetIsActive(false);
 	menuScene->SetIsActive(true);
-
-
-
-
-	//auto& scene = SceneManager::GetInstance().CreateScene("GameIntro");
-	//InputManager::GetInstance().CreateController(0);
-
 }
 
 
 int main(int, char* [])
 {
-	ServiceLocator::RegisterSoundService(new SDLSoundSystem(4));
-	ServiceLocator::RegisterPhysicsService(new PhysicsService());
+	BearBones::ServiceLocator::RegisterSoundService(new BearBones::SDLSoundSystem(4));
 
-	dae::Minigin engine("./Data/", windowWidth, windowHeight);
+	Minigin engine("./Data/", windowWidth, windowHeight);
 	engine.Run(load);
 
-	ServiceLocator::DestroyServices();
+	BearBones::ServiceLocator::DestroyServices();
 
 	return 0;
 }

@@ -10,13 +10,13 @@
 #include <Renderer.h>
 #include "Stage.h"
 
-DigDug::LevelComponent::LevelComponent(Entity* object, int sizeX, int sizeY)
+DigDug::LevelComponent::LevelComponent(BearBones::Entity* object, int sizeX, int sizeY)
 	: Component{ object }
 	, m_gridSize{ sizeX, sizeY }
 {
 	for (size_t i = 0; i < 6; i++)
 	{
-		m_groundTextures.emplace_back(ResourceManager::GetInstance().LoadTexture(
+		m_groundTextures.emplace_back(BearBones::ResourceManager::GetInstance().LoadTexture(
 			"Resources/Sprites/Level/" + std::to_string(i) + ".png"));
 	}
 
@@ -27,7 +27,7 @@ DigDug::LevelComponent::LevelComponent(Entity* object, int sizeX, int sizeY)
 
 }
 
-DigDug::LevelComponent::LevelComponent(Entity* object, const Stage stage)
+DigDug::LevelComponent::LevelComponent(BearBones::Entity* object, const Stage stage)
 	: Component{ object }
 	, m_gridSize{ stage.cols, stage.rows }
 {
@@ -37,7 +37,7 @@ DigDug::LevelComponent::LevelComponent(Entity* object, const Stage stage)
 
 	for (size_t i = 0; i < 24; i++)
 	{
-		m_groundTextures.emplace_back(ResourceManager::GetInstance().LoadTexture(
+		m_groundTextures.emplace_back(BearBones::ResourceManager::GetInstance().LoadTexture(
 			spritesFolder + std::to_string(i) + ".png"));
 	}
 
@@ -69,7 +69,7 @@ void DigDug::LevelComponent::Render() const
 			const auto offsetPos = glm::vec2{ x * textureSize.x, y * textureSize.y };
 			const auto pos = topLeftPos + offsetPos;
 
-			Renderer::GetInstance().RenderTexture(*m_groundTextures[textureState], pos.x, pos.y, textureSize.x, textureSize.y);
+			BearBones::Renderer::GetInstance().RenderTexture(*m_groundTextures[textureState], pos.x, pos.y, textureSize.x, textureSize.y);
 		}
 	}
 	

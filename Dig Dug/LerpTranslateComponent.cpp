@@ -4,7 +4,7 @@
 #include <TransformComponent.h>
 
 
-DigDug::LerpTranslateComponent::LerpTranslateComponent(Entity* object, float destinationX, float destinationY, float lerpTime)
+DigDug::LerpTranslateComponent::LerpTranslateComponent(BearBones::Entity* object, float destinationX, float destinationY, float lerpTime)
 	: Component{ object }
 	, m_destinationPos { destinationX, destinationY }
 	, m_lerpTime{ lerpTime }
@@ -14,7 +14,7 @@ DigDug::LerpTranslateComponent::LerpTranslateComponent(Entity* object, float des
 
 void DigDug::LerpTranslateComponent::Update()
 {
-	m_currentTime += TIME.GetDeltaTime();
+	m_currentTime += BearBones::TIME.GetDeltaTime();
 	float t = m_currentTime / m_lerpTime;
 	if (t > 1.f) return;
 	float x = m_originalPos.x + (m_destinationPos.x - m_originalPos.x) * t;

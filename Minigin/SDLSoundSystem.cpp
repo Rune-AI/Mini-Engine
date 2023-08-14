@@ -80,6 +80,10 @@ BearBones::SDLSoundSystemImpl::SDLSoundSystemImpl(int channelCount)
     Mix_ReserveChannels(channelCount);
 }
 
+BearBones::SDLSoundSystemImpl::~SDLSoundSystemImpl()
+{
+}
+
 void BearBones::SDLSoundSystemImpl::Play(const std::string& soundName, const float volume)
 {
     {
@@ -114,6 +118,15 @@ void BearBones::SDLSoundSystemImpl::Play(const std::string& soundName, const flo
 
 
     
+}
+
+void BearBones::SDLSoundSystemImpl::SetVolume(const std::string& /*soundName*/, const float /*volume*/)
+{
+
+}
+
+void BearBones::SDLSoundSystemImpl::SetPauze(const std::string& /*soundName*/, const bool /*isPauzed*/)
+{
 }
 
 void BearBones::SDLSoundSystemImpl::HaltService()

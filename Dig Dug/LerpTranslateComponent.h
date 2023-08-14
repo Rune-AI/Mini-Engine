@@ -6,10 +6,10 @@
 
 namespace DigDug
 {
-	class LerpTranslateComponent : public Component
+	class LerpTranslateComponent : public BearBones::Component
 	{
 	public:
-		LerpTranslateComponent(Entity* object, float destinationX, float destinationY, float lerpTime);
+		LerpTranslateComponent(BearBones::Entity* object, float destinationX, float destinationY, float lerpTime);
 		virtual ~LerpTranslateComponent() = default;
 
 		LerpTranslateComponent(const LerpTranslateComponent& other) = delete;

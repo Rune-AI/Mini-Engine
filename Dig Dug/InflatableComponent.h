@@ -6,10 +6,10 @@
 
 namespace DigDug
 {
-	class InflatableComponent : public Component, public Subject<Entity*>
+	class InflatableComponent : public BearBones::Component, public BearBones::Subject<BearBones::Entity*>
 	{
 	public:
-		InflatableComponent(Entity* object);
+		InflatableComponent(BearBones::Entity* object);
 		virtual ~InflatableComponent() = default;
 
 		InflatableComponent(const InflatableComponent& other) = delete;

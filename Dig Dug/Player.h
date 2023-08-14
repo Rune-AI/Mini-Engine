@@ -9,10 +9,10 @@
 
 namespace DigDug
 {
-	class Player : public Component
+	class Player : public BearBones::Component
 	{
 	public:
-		Player(Entity* object);
+		Player(BearBones::Entity* object);
 		virtual ~Player() = default;
 
 		Player(const Player& other) = delete;
@@ -49,9 +49,9 @@ namespace DigDug
 		float m_angle{};
 
 
-		std::shared_ptr<Texture2D> m_idleTexture{};
-		std::shared_ptr<Texture2D> m_pumpTexture{};
-		std::shared_ptr<Texture2D> m_ropeTexture{};
+		std::shared_ptr<BearBones::Texture2D> m_idleTexture{};
+		std::shared_ptr<BearBones::Texture2D> m_pumpTexture{};
+		std::shared_ptr<BearBones::Texture2D> m_ropeTexture{};
 	};
 }
 

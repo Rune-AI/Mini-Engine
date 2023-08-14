@@ -11,11 +11,11 @@
 
 namespace DigDug
 {
-	class LevelComponent : public Component
+	class LevelComponent : public BearBones::Component
 	{
 	public:
-		LevelComponent(Entity* object, int sizeX, int sizeY);
-		LevelComponent(Entity* object, const Stage stage);
+		LevelComponent(BearBones::Entity* object, int sizeX, int sizeY);
+		LevelComponent(BearBones::Entity* object, const Stage stage);
 		virtual ~LevelComponent() = default;
 
 		LevelComponent(const LevelComponent& other) = delete;
@@ -29,7 +29,7 @@ namespace DigDug
 
 	private:
 		glm::ivec2 m_gridSize;
-		std::vector<std::shared_ptr<Texture2D>> m_groundTextures{};
+		std::vector<std::shared_ptr<BearBones::Texture2D>> m_groundTextures{};
 		std::vector<int> m_groundStates{};
 	};
 }

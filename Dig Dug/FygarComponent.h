@@ -5,10 +5,10 @@
 
 namespace DigDug
 {
-	class FygarComponent : public Component
+	class FygarComponent : public BearBones::Component
 	{
 	public:
-		FygarComponent(Entity* object);
+		FygarComponent(BearBones::Entity* object);
 		virtual ~FygarComponent() = default;
 
 		FygarComponent(const FygarComponent& other) = delete;

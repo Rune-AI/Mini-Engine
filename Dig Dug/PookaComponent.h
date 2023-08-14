@@ -9,10 +9,10 @@
 
 namespace DigDug
 {
-	class PookaComponent : public Component, public IObserver<Entity*>
+	class PookaComponent : public BearBones::Component, public BearBones::IObserver<BearBones::Entity*>
 	{
 	public:
-		PookaComponent(Entity* object);
+		PookaComponent(BearBones::Entity* object);
 		virtual ~PookaComponent() = default;
 
 		PookaComponent(const PookaComponent& other) = delete;
@@ -23,15 +23,15 @@ namespace DigDug
 		virtual void Update() override;
 		virtual void Render() const override;
 
-		void OnNotify(Entity*) override;
+		void OnNotify(BearBones::Entity*) override;
 
-		IObserver<Entity*>* GetObserver() override
+		IObserver<BearBones::Entity*>* GetObserver() override
 		{
 			return this;
 		}
 
 	private:
-		std::shared_ptr<Texture2D> m_idleTexture{};
+		std::shared_ptr<BearBones::Texture2D> m_idleTexture{};
 
 
 		float m_deflateTimer{};

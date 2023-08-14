@@ -8,11 +8,11 @@
 #include <TransformComponent.h>
 #include <EngineTime.h>
 
-DigDug::Player::Player(Entity* object)
+DigDug::Player::Player(BearBones::Entity* object)
     : Component(object)
-    , m_pumpTexture{ ResourceManager::GetInstance().LoadTexture("Resources/Sprites/Pump/head.png")}
-    , m_ropeTexture{ ResourceManager::GetInstance().LoadTexture("Resources/Sprites/Pump/rope.png")}
-    , m_idleTexture{ ResourceManager::GetInstance().LoadTexture("Resources/Sprites/Character/Walk/0.png") }
+    , m_pumpTexture{ BearBones::ResourceManager::GetInstance().LoadTexture("Resources/Sprites/Pump/head.png")}
+    , m_ropeTexture{ BearBones::ResourceManager::GetInstance().LoadTexture("Resources/Sprites/Pump/rope.png")}
+    , m_idleTexture{ BearBones::ResourceManager::GetInstance().LoadTexture("Resources/Sprites/Character/Walk/0.png") }
     , m_IsPumping{ false }
     , m_pumpHeadDistance{}
     , m_pumpHeadSpeed{ 100.f }
@@ -64,7 +64,7 @@ void DigDug::Player::Render() const
     }
 
 
-    Renderer::GetInstance().RenderTextureEx(*m_idleTexture,
+    BearBones::Renderer::GetInstance().RenderTextureEx(*m_idleTexture,
         pos.x, pos.y,
         float(textureSize.x), float(textureSize.y),
         m_angle, flip);
@@ -84,12 +84,12 @@ void DigDug::Player::Move()
     if (m_moveDirection == glm::vec2{ 0,0 }) return;
 
     auto pos = m_pOwner->GetTransform()->GetLocalPosition();
-    m_pOwner->GetTransform()->SetLocalPosition(pos + m_moveDirection * 100.f * TIME.GetDeltaTime());
+    m_pOwner->GetTransform()->SetLocalPosition(pos + m_moveDirection * 100.f * BearBones::TIME.GetDeltaTime());
 }
 
 void DigDug::Player::HandleControllerInput()
 {
-    auto direction = InputManager::GetInstance().GetController()->GetLeftThumbStick();
+    auto direction = BearBones::InputManager::GetInstance().GetController()->GetLeftThumbStick();
     if (glm::length(direction) > 0.1f)
     {
 		m_moveDirection = direction;
@@ -100,7 +100,7 @@ void DigDug::Player::HandleControllerInput()
 
 void DigDug::Player::HandleKeyboardInput()
 {
-    auto keyboard = InputManager::GetInstance().GetKeyboard();
+    auto keyboard = BearBones::InputManager::GetInstance().GetKeyboard();
     
     if (keyboard->IsPressed(SDL_SCANCODE_W))
     {
@@ -132,7 +132,7 @@ void DigDug::Player::UpdatePump()
 {
     if (m_IsPumping)
     {
-        m_pumpHeadDistance = m_pumpHeadDistance + m_pumpHeadSpeed * TIME.GetDeltaTime();
+        m_pumpHeadDistance = m_pumpHeadDistance + m_pumpHeadSpeed * BearBones::TIME.GetDeltaTime();
         if (m_pumpHeadDistance > m_pumpHeadMaxDistance)
         {
             //reset
@@ -164,7 +164,7 @@ void DigDug::Player::RenderPump() const
         flip = SDL_FLIP_VERTICAL;
     }
 
-    Renderer::GetInstance().RenderTextureEx(*m_pumpTexture,
+    BearBones::Renderer::GetInstance().RenderTextureEx(*m_pumpTexture,
         pos.x, pos.y,
         float(textureSize.x), float(textureSize.y),
         m_angle, flip);
@@ -172,7 +172,7 @@ void DigDug::Player::RenderPump() const
     for (size_t i = 0; i < m_pumpHeadDistance/textureSize.x - 1 ; i++)
     {
         pos -= m_moveDirection * textureSize.x;
-		Renderer::GetInstance().RenderTextureEx(*m_ropeTexture,
+        BearBones::Renderer::GetInstance().RenderTextureEx(*m_ropeTexture,
             pos.x, pos.y,
             float(textureSize.x), float(textureSize.y),
             m_angle, flip);

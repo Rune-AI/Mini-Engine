@@ -3,10 +3,10 @@
 
 #include <Command.h>
 #include <glm/ext/vector_float2.hpp>
-class MoveCommand final : public Command
+class MoveCommand final : public BearBones::Command
 {
 public:
-	MoveCommand(Entity* obj) : Command{ obj } {};
+	MoveCommand(BearBones::Entity* obj) : Command{ obj } {};
 	virtual void Execute() override;
 
 private:

@@ -2,10 +2,10 @@
 #define PUMP_COMMAND_H
 
 #include <Command.h>
-class PumpCommand final : public Command
+class PumpCommand final : public BearBones::Command
 {
 public:
-	PumpCommand(Entity* obj) : Command{ obj } {};
+	PumpCommand(BearBones::Entity* obj) : Command{ obj } {};
 	virtual void Execute() override;
 };
 
