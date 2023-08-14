@@ -58,8 +58,26 @@ Scene* createMenuScene()
 {
 	auto& scene = SceneManager::GetInstance().CreateScene("MainMenu");
 
+	auto anchor = std::make_unique<Entity>();
+	anchor->GetTransform()->SetLocalPosition(0.f, windowHeight); //bottom of the page so it can move up
+	anchor->AddComponent<DigDug::LerpTranslateComponent>(0.f, 0.f, 2.f);
+
 	auto background = std::make_unique<Entity>();
 	background->AddComponent<TextureComponent>("background.tga");
+
+	//SAVED STATS
+	auto savedStats = std::make_unique<Entity>();
+	savedStats->GetTransform()->SetLocalPosition(0, 0);
+
+	auto oneUp = std::make_unique<Entity>();
+	savedStats->AttachChild(oneUp.get(), false);
+	auto highScore= std::make_unique<Entity>();
+	savedStats->AttachChild(highScore.get(), false);
+	auto twoUp = std::make_unique<Entity>();
+	savedStats->AttachChild(oneUp.get(), false);
+
+
+
 
 	auto logo = std::make_unique<Entity>();
 	logo->AddComponent<BearBones::TextureComponent>("Resources/Sprites/Logo.png");
@@ -70,15 +88,21 @@ Scene* createMenuScene()
 	auto font = ResourceManager::GetInstance().LoadFont("Lingua.otf", 24);
 
 	auto playButton = std::make_unique<Entity>();
-	playButton->AddComponent<TextComponent>("SOLO", font);
+	playButton->AddComponent<TextComponent>("Press ENTER/START To Start", font);
 	playButton->GetTransform()->SetLocalPosition(windowWidth / 2.f - logoWidth / 2.f - 50.f, 200.f);
+
+	anchor->AttachChild(logo.get(), false);
+	anchor->AttachChild(playButton.get(), false);
 
 	InputManager::GetInstance().CreateDesktopCommand<StartGameCommand>(SDL_SCANCODE_RETURN, InputState::Press, playButton.get());
 	InputManager::GetInstance().CreateConsoleCommand<StartGameCommand>(XINPUT_GAMEPAD_START, InputState::Press, playButton.get());
 
 	scene.Add(std::move(background));
+	scene.Add(std::move(anchor));
 	scene.Add(std::move(logo));
 	scene.Add(std::move(playButton));
+
+
 
 	return &scene;
 }
