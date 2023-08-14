@@ -10,6 +10,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Dig Dug", "Dig Dug\Dig Dug.
 		{41B0EC47-D48C-4B0F-951B-D98595FFAE0A} = {41B0EC47-D48C-4B0F-951B-D98595FFAE0A}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bomberman", "Bomberman\Bomberman.vcxproj", "{55F09322-B081-4ED0-A5F0-9ABDD8F1CA54}"
+	ProjectSection(ProjectDependencies) = postProject
+		{41B0EC47-D48C-4B0F-951B-D98595FFAE0A} = {41B0EC47-D48C-4B0F-951B-D98595FFAE0A}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -34,6 +39,14 @@ Global
 		{1A124419-7EF5-4338-ACF0-30E5B7058B10}.Release|x64.Build.0 = Release|x64
 		{1A124419-7EF5-4338-ACF0-30E5B7058B10}.Release|x86.ActiveCfg = Release|Win32
 		{1A124419-7EF5-4338-ACF0-30E5B7058B10}.Release|x86.Build.0 = Release|Win32
+		{55F09322-B081-4ED0-A5F0-9ABDD8F1CA54}.Debug|x64.ActiveCfg = Debug|x64
+		{55F09322-B081-4ED0-A5F0-9ABDD8F1CA54}.Debug|x64.Build.0 = Debug|x64
+		{55F09322-B081-4ED0-A5F0-9ABDD8F1CA54}.Debug|x86.ActiveCfg = Debug|Win32
+		{55F09322-B081-4ED0-A5F0-9ABDD8F1CA54}.Debug|x86.Build.0 = Debug|Win32
+		{55F09322-B081-4ED0-A5F0-9ABDD8F1CA54}.Release|x64.ActiveCfg = Release|x64
+		{55F09322-B081-4ED0-A5F0-9ABDD8F1CA54}.Release|x64.Build.0 = Release|x64
+		{55F09322-B081-4ED0-A5F0-9ABDD8F1CA54}.Release|x86.ActiveCfg = Release|Win32
+		{55F09322-B081-4ED0-A5F0-9ABDD8F1CA54}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

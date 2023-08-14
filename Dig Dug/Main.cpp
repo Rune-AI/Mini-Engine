@@ -117,7 +117,7 @@ void load()
 
 int main(int, char* [])
 {
-	BearBones::ServiceLocator::RegisterSoundService(new BearBones::SDLSoundSystem(4));
+	//BearBones::ServiceLocator::RegisterSoundService(new BearBones::SDLSoundSystem(4));
 
 	Minigin engine("./Data/", windowWidth, windowHeight);
 	engine.Run(load);
