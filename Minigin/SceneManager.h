@@ -26,6 +26,7 @@ namespace BearBones
 		void Render();
 		void RenderImGui();
 		Scene* GetScene(std::string name) const;
+		Scene* GetActiveScene() const;
 
 
 	private:

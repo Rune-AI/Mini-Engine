@@ -56,7 +56,7 @@ BearBones::Minigin::Minigin(const std::string &dataPath, int windowWidth, int wi
 	}
 
 	g_window = SDL_CreateWindow(
-		"Programming 4 assignment",
+		"Bomberman - Rune van der Lei",
 		SDL_WINDOWPOS_CENTERED,
 		SDL_WINDOWPOS_CENTERED,
 		windowWidth,

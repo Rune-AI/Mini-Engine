@@ -30,6 +30,8 @@ namespace BearBones
 
 		std::string GetName() const { return m_name; };
 
+		Entity* GetCamera() const;
+
 	private:
 		bool IsActive{true};
 

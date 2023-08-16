@@ -119,7 +119,7 @@ int main(int, char* [])
 {
 	//BearBones::ServiceLocator::RegisterSoundService(new BearBones::SDLSoundSystem(4));
 
-	Minigin engine("./Data/", windowWidth, windowHeight);
+	Minigin engine("./DigdugData/", windowWidth, windowHeight);
 	engine.Run(load);
 
 	BearBones::ServiceLocator::DestroyServices();

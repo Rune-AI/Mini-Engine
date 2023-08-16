@@ -150,6 +150,9 @@
     <ClInclude Include="SoundLogger.h">
       <Filter>Engine\Services\Sound</Filter>
     </ClInclude>
+    <ClInclude Include="CameraComponent.h">
+      <Filter>Engine\ECS\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Entity.cpp">
@@ -241,6 +244,9 @@
     </ClCompile>
     <ClCompile Include="SoundLogger.cpp">
       <Filter>Engine\Services\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraComponent.cpp">
+      <Filter>Engine\ECS\Components</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

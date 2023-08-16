@@ -3,6 +3,7 @@
 
 #include <SDL.h>
 #include "Singleton.h"
+#include "CameraComponent.h"
 
 #define RENDERER Renderer::GetInstance()
 
@@ -33,6 +34,9 @@ namespace BearBones
 
 		const SDL_Color& GetBackgroundColor() const { return m_clearColor; }
 		void SetBackgroundColor(const SDL_Color& color) { m_clearColor = color; }
+
+	private:
+		void WorldToCamera(SDL_Rect& rect) const;
 	};
 }
 #endif //RENDERER_H

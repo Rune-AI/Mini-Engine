@@ -38,6 +38,18 @@ BearBones::Scene* BearBones::SceneManager::GetScene(std::string name) const
 	return nullptr;
 }
 
+BearBones::Scene* BearBones::SceneManager::GetActiveScene() const
+{
+	for (const auto& scene : m_scenes)
+	{
+		if (scene->GetIsActive())
+		{
+			return scene.get();
+		}
+	}
+	return nullptr;
+}
+
 BearBones::Scene& BearBones::SceneManager::CreateScene(const std::string& name)
 {
 	//const auto& scene = std::unique_ptr<Scene>(std::make_unique<Scene>(name));

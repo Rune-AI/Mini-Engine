@@ -116,6 +116,7 @@ BearBones::TransformComponent* BearBones::Entity::GetTransform() const
 	if (!m_TransformComponent)
 	{
 		///HUH
+		assert(false);
 	}
 	
 	return m_TransformComponent;

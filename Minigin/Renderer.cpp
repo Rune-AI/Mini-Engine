@@ -8,6 +8,7 @@
 #include "imgui.h"
 #include <imgui_impl_sdl2.h>
 #include <imgui_impl_opengl2.h>
+#include "TransformComponent.h"
 
 int GetOpenGLDriverIndex()
 {
@@ -82,6 +83,7 @@ void BearBones::Renderer::RenderTexture(const Texture2D& texture, const float x,
 	dst.x = static_cast<int>(x);
 	dst.y = static_cast<int>(y);
 	SDL_QueryTexture(texture.GetSDLTexture(), nullptr, nullptr, &dst.w, &dst.h);
+	WorldToCamera(dst);
 	SDL_RenderCopy(GetSDLRenderer(), texture.GetSDLTexture(), nullptr, &dst);
 }
 
@@ -92,6 +94,7 @@ void BearBones::Renderer::RenderTexture(const Texture2D& texture, const float x,
 	dst.y = static_cast<int>(y);
 	dst.w = static_cast<int>(width);
 	dst.h = static_cast<int>(height);
+	WorldToCamera(dst);
 	SDL_RenderCopy(GetSDLRenderer(), texture.GetSDLTexture(), nullptr, &dst);
 }
 
@@ -101,6 +104,7 @@ void BearBones::Renderer::RenderTextureEx(const Texture2D& texture, const float 
 	dst.x = static_cast<int>(x);
 	dst.y = static_cast<int>(y);
 	SDL_QueryTexture(texture.GetSDLTexture(), nullptr, nullptr, &dst.w, &dst.h);
+	WorldToCamera(dst);
 	SDL_RenderCopyEx(GetSDLRenderer(), texture.GetSDLTexture(), nullptr, &dst, double(angle), nullptr, flip);
 }
 
@@ -111,6 +115,7 @@ void BearBones::Renderer::RenderTextureEx(const Texture2D& texture, const float 
 	dst.y = static_cast<int>(y);
 	dst.w = static_cast<int>(width);
 	dst.h = static_cast<int>(height);
+	WorldToCamera(dst);
 	SDL_RenderCopyEx(GetSDLRenderer(), texture.GetSDLTexture(), nullptr, &dst, double(angle), nullptr, flip);
 }
 
@@ -122,7 +127,24 @@ void BearBones::Renderer::RenderTextureEx(const Texture2D& texture, const float 
 	SDL_QueryTexture(texture.GetSDLTexture(), nullptr, nullptr, &dst.w, &dst.h);
 	dst.w = static_cast<int>(dst.w * scaleX);
 	dst.h = static_cast<int>(dst.h * scaleY);
+	WorldToCamera(dst);
 	SDL_RenderCopyEx(GetSDLRenderer(), texture.GetSDLTexture(), nullptr, &dst, double(angle), nullptr, flip);
 }
 
 inline SDL_Renderer* BearBones::Renderer::GetSDLRenderer() const { return m_renderer; }
+
+void BearBones::Renderer::WorldToCamera(SDL_Rect& rect) const
+{
+	const auto& camera = SceneManager::GetInstance().GetActiveScene()->GetCamera();
+	if(camera == nullptr)
+		return;
+	auto camPos = camera->GetTransform()->GetWorldPosition();
+	auto camScale = camera->GetTransform()->GetWorldScale();
+	//auto camRotation = camera->GetTransform()->GetWorldRotation();
+
+	rect.x -= int(camPos.x);
+	rect.y -= int(camPos.y);
+
+	rect.w = int(rect.w * camScale.x);
+	rect.h = int(rect.h * camScale.y);
+}

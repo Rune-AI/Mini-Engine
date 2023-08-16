@@ -2,12 +2,25 @@
 #include <imgui_plot.h>
 #include "Scene.h"
 #include "Entity.h"
+#include "CameraComponent.h"
 
 unsigned int BearBones::Scene::m_idCounter = 0;
 
 BearBones::Scene::Scene(const std::string& name) : m_name(name) {}
 
 BearBones::Scene::~Scene() = default;
+
+BearBones::Entity* BearBones::Scene::GetCamera() const
+{
+	for (const auto& object : m_objects)
+	{
+		if (object->HasComponent<CameraComponent>())
+		{
+			return object.get();
+		}
+	}
+	return nullptr;
+}
 
 void BearBones::Scene::Add(std::unique_ptr<Entity> object)
 {

@@ -108,7 +108,7 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\$(PlatformTarget)\*.dll" "$(OutputPat
 
 xcopy "$(SolutionDir)3rdParty\SDL2_mixer\lib\$(PlatformTarget)\*.dll" "$(OutputPath)" /R /Y
 
-xcopy "$(ProjectDir)Data\*" "$(OutputPath)Data\" /Y /I /E
+xcopy "$(ProjectDir)DigdugData\*" "$(OutputPath)DigdugData\" /Y /I /E
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -144,7 +144,7 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\$(PlatformTarget)\*.dll" "$(OutputPat
 
 xcopy "$(SolutionDir)3rdParty\SDL2_mixer\lib\$(PlatformTarget)\*.dll" "$(OutputPath)" /R /Y
 
-xcopy "$(ProjectDir)Data\*" "$(OutputPath)Data\" /Y /I /E
+xcopy "$(ProjectDir)DigdugData\*" "$(OutputPath)DigdugData\" /Y /I /E
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -176,7 +176,7 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\$(PlatformTarget)\*.dll" "$(OutputPat
 
 xcopy "$(SolutionDir)3rdParty\SDL2_mixer\lib\$(PlatformTarget)\*.dll" "$(OutputPath)" /R /Y
 
-xcopy "$(ProjectDir)Data\*" "$(OutputPath)Data\" /Y /I /E
+xcopy "$(ProjectDir)DigdugData\*" "$(OutputPath)DigdugData\" /Y /I /E
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -212,7 +212,7 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\$(PlatformTarget)\*.dll" "$(OutputPat
 
 xcopy "$(SolutionDir)3rdParty\SDL2_mixer\lib\$(PlatformTarget)\*.dll" "$(OutputPath)" /R /Y
 
-xcopy "$(ProjectDir)Data\*" "$(OutputPath)Data\" /Y /I /E
+xcopy "$(ProjectDir)DigdugData\*" "$(OutputPath)DigdugData\" /Y /I /E
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
