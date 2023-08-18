@@ -153,6 +153,9 @@
     <ClInclude Include="CameraComponent.h">
       <Filter>Engine\ECS\Components</Filter>
     </ClInclude>
+    <ClInclude Include="SpriteComponent.h">
+      <Filter>Engine\ECS\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Entity.cpp">
@@ -246,6 +249,9 @@
       <Filter>Engine\Services\Sound</Filter>
     </ClCompile>
     <ClCompile Include="CameraComponent.cpp">
+      <Filter>Engine\ECS\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteComponent.cpp">
       <Filter>Engine\ECS\Components</Filter>
     </ClCompile>
   </ItemGroup>

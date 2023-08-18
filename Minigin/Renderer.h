@@ -24,6 +24,7 @@ namespace BearBones
 		void RenderImGui();
 		void Destroy();
 
+		void RenderCopy(const Texture2D& texture, const SDL_Rect* srcrect, const SDL_Rect* dstrect) const;
 		void RenderTexture(const Texture2D& texture, float x, float y) const;
 		void RenderTexture(const Texture2D& texture, float x, float y, float width, float height) const;
 		void RenderTextureEx(const Texture2D& texture, const float x, const float y, const float angle, const SDL_RendererFlip flip) const;

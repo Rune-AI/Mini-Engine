@@ -77,6 +77,11 @@ void BearBones::Renderer::Destroy()
 	}
 }
 
+void BearBones::Renderer::RenderCopy(const Texture2D& texture, const SDL_Rect* srcrect, const SDL_Rect* dstrect) const
+{
+	SDL_RenderCopy(GetSDLRenderer(), texture.GetSDLTexture(), srcrect, dstrect);
+}
+
 void BearBones::Renderer::RenderTexture(const Texture2D& texture, const float x, const float y) const
 {
 	SDL_Rect dst{};

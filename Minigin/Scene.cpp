@@ -3,6 +3,7 @@
 #include "Scene.h"
 #include "Entity.h"
 #include "CameraComponent.h"
+#include <algorithm>
 
 unsigned int BearBones::Scene::m_idCounter = 0;
 
@@ -40,6 +41,11 @@ void BearBones::Scene::RemoveAll()
 void BearBones::Scene::Update()
 {
 	if (!IsActive) return;
+
+	sort(m_objects.begin(), m_objects.end(), [](const std::unique_ptr<Entity>& a, const std::unique_ptr<Entity>& b)
+		{
+			return a->GetZOrder() < b->GetZOrder();
+		});
 
 	for(auto& object : m_objects)
 	{

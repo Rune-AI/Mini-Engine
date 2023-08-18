@@ -18,6 +18,8 @@ using namespace BearBones;
 #include <CameraComponent.h>
 #include <TransformComponent.h>
 
+#include "LevelComponent.h"
+
 Scene* createGameScene()
 {
 	auto& scene = SceneManager::GetInstance().CreateScene("Game");
@@ -30,14 +32,21 @@ Scene* createGameScene()
 
 	auto background = std::make_unique<Entity>();
 	background->AddComponent<TextureComponent>("Resources/Backgrounds/Playfield.png");
-
-
+	background->SetZOrder(-1);
 	auto backgroundSize = background->GetComponent<TextureComponent>()->GetTextureSize();
+	int backgroundTileSize = 16;
+
+	auto Level = std::make_unique<Entity>();
+	Level->AddComponent<Bomberman::LevelComponent>(backgroundSize.x / backgroundTileSize, backgroundSize.y / backgroundTileSize);
+	
+
+
 	float cameraScale = float(windowHeight)/ backgroundSize.y;
 	camera->GetTransform()->SetLocalScale(cameraScale, cameraScale);
 
 
-	scene.Add(std::move(camera));
+	//scene.Add(std::move(camera));
+	scene.Add(std::move(Level));
 	scene.Add(std::move(background));
 	return &scene;
 }

@@ -28,6 +28,11 @@ namespace BearBones
 		Entity& operator=(const Entity& other) = delete;
 		Entity& operator=(Entity&& other) = delete;
 
+		bool operator<(const Entity& b)
+		{
+			return m_ZOrder > b.m_ZOrder;
+		}
+
 
 		virtual void Update();
 		virtual void Render() const;
@@ -68,6 +73,9 @@ namespace BearBones
 		void RemoveTag(const std::string& tag);
 		bool HasTag(const std::string& tag) const;
 
+		void SetZOrder(int zOrder);
+		int GetZOrder() const;
+
 	private:
 		void AddChild(Entity* pChild);
 		void RemoveChild(Entity* pChild);
@@ -84,6 +92,8 @@ namespace BearBones
 		bool m_IsActive{ true };
 		bool m_MarkedForDeletion{ false};
 		bool m_CanBeDestroyed{ true };
+
+		int m_ZOrder{ 0 };
 	};
 
 

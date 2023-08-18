@@ -19,7 +19,23 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ControllerComponent.cpp" />
+    <ClCompile Include="DestructableComponent.cpp" />
+    <ClCompile Include="EnemyAIController.cpp" />
+    <ClCompile Include="LevelComponent.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="PickupComponent.cpp" />
+    <ClCompile Include="TriggerComponent.cpp" />
+    <ClCompile Include="WallComponent.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ControllerComponent.h" />
+    <ClInclude Include="DestructableComponent.h" />
+    <ClInclude Include="EnemyAIController.h" />
+    <ClInclude Include="LevelComponent.h" />
+    <ClInclude Include="PickupComponent.h" />
+    <ClInclude Include="TriggerComponent.h" />
+    <ClInclude Include="WallComponent.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

@@ -8,7 +8,7 @@
 
 namespace BearBones
 {
-	class TextureComponent final : public Component
+	class TextureComponent : public Component
 	{
 	public:
 		TextureComponent(Entity* object);
@@ -28,7 +28,7 @@ namespace BearBones
 		void SetTexture(const std::string& filename);
 		glm::ivec2 GetTextureSize() const { return m_pTexture->GetSize(); }
 
-	private:
+	protected:
 		std::shared_ptr<Texture2D> m_pTexture{};
 	};
 }

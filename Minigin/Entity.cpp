@@ -178,3 +178,13 @@ bool BearBones::Entity::HasTag(const std::string& tag) const
 {
 	return std::find(m_Tags.begin(), m_Tags.end(), tag) != m_Tags.end();
 }
+
+void BearBones::Entity::SetZOrder(int zOrder)
+{
+	m_ZOrder = zOrder;
+}
+
+int BearBones::Entity::GetZOrder() const
+{
+	return m_ZOrder;
+}
