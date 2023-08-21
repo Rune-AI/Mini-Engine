@@ -8,7 +8,7 @@
 
 namespace BearBones
 {
-	class SpriteComponent final : public TextureComponent
+	class SpriteComponent : public TextureComponent
 	{
 	public:
 		SpriteComponent(Entity* object);
@@ -42,7 +42,7 @@ namespace BearBones
 		int m_SpriteIndexEnd{};
 		int m_CurrentSpriteIndex{};
 		float m_SpriteTime{};
-		float m_SpriteTimePerFrame{};
+		float m_SpriteTimePerFrame{0.2f};
 		bool m_IsLooping{};
 		bool m_IsPlaying{};
 		bool m_IsCompleted{};

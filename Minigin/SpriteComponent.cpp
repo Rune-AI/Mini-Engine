@@ -39,14 +39,14 @@ void BearBones::SpriteComponent::Update()
 		{
 			m_SpriteTime -= m_SpriteTimePerFrame;
 			++m_CurrentSpriteIndex;
-			if (m_CurrentSpriteIndex > m_SpriteIndexEnd && !m_IsLooping)
+			if (m_CurrentSpriteIndex > m_SpriteIndexEnd - m_SpriteIndexStart && !m_IsLooping)
 			{
 				m_IsCompleted = true;
 				m_IsPlaying = false;
 			}
 			else
 			{
-				m_CurrentSpriteIndex = m_CurrentSpriteIndex % m_SpriteIndexEnd + m_SpriteIndexStart;
+				m_CurrentSpriteIndex = m_CurrentSpriteIndex % (m_SpriteIndexEnd - m_SpriteIndexStart);
 			}
 		}
 	}
@@ -58,9 +58,10 @@ void BearBones::SpriteComponent::Render() const
 	const auto scale = m_pOwner->GetTransform()->GetWorldScale();
 	glm::ivec2 textureSize = m_pTexture->GetSize();
 
+	int index = m_CurrentSpriteIndex + m_SpriteIndexStart;
 	SDL_Rect srcRect;
-	srcRect.x = m_CurrentSpriteIndex * m_SpriteWidth % textureSize.x;
-	srcRect.y = m_CurrentSpriteIndex * m_SpriteWidth / textureSize.x * m_SpriteHeight;
+	srcRect.x = index * m_SpriteWidth % textureSize.x;
+	srcRect.y = index * m_SpriteWidth / textureSize.x * m_SpriteHeight;
 	srcRect.w = m_SpriteWidth;
 	srcRect.h = m_SpriteHeight;
 
