@@ -23,16 +23,6 @@ bool BearBones::InputManager::ProcessInput()
 			return false;
 	}
 
-	int keys{};
-	auto state = SDL_GetKeyboardState(&keys);
-	for (auto& command : m_DesktopCommands)
-	{
-		if (state[command.first] && command.second.first == InputState::Hold)
-		{
-			command.second.second->Execute();
-		}
-	}
-
 	return true;
 }
 
@@ -51,33 +41,9 @@ void BearBones::InputManager::CreateController(int controllerIndex)
 	m_XboxController = std::make_unique<XboxController>(controllerIndex);
 }
 
-void BearBones::InputManager::UpdateComputerInput(SDL_Event event)
+void BearBones::InputManager::UpdateComputerInput(SDL_Event /*event*/)
 {
 	m_Keyboard->Update();
-
-	for (auto& command : m_DesktopCommands)
-	{
-		auto key = event.key.keysym.scancode;
-
-		if (command.first != key)
-			continue;
-
-		switch (event.type)
-		{
-		case SDL_KEYDOWN:
-			if (command.second.first == InputState::Press && event.key.repeat == 0)
-			{
-				command.second.second->Execute();
-			}
-			break;
-		case SDL_KEYUP:
-			if (command.second.first == InputState::Release)
-			{
-				command.second.second->Execute();
-			}
-			break;
-		}
-	}
 }
 
 void BearBones::InputManager::UpdateConsoleInput()
@@ -85,32 +51,6 @@ void BearBones::InputManager::UpdateConsoleInput()
 	if (m_XboxController)
 	{
 		m_XboxController->Update();
-
-		for (auto& command : m_ConsoleCommands)
-		{
-			switch (command.second.first)
-			{
-			case InputState::Press:
-				if (m_XboxController->IsDownThisFrame(command.first))
-				{
-					command.second.second->Execute();
-				}
-				break;
-			case InputState::Hold:
-				if (m_XboxController->IsPressed(command.first))
-				{
-					command.second.second->Execute();
-				}
-				break;
-			case InputState::Release:
-				if (m_XboxController->IsUpThisFrame(command.first))
-				{
-					command.second.second->Execute();
-				}
-				break;
-			}
-
-		}
 	}
 }
 

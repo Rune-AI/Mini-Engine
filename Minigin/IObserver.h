@@ -3,12 +3,12 @@
 
 namespace BearBones
 {
-	template<typename T>
+	template<typename T, typename D>
 	class IObserver
 	{
 	public:
-		virtual void OnNotify(T data) = 0;
-		virtual IObserver<T>* GetObserver() = 0;
+		virtual void OnNotify(D data) = 0;
+		virtual IObserver<T, D>* GetObserver() = 0;
 	};
 }
 #endif //OBSERVER_INTERFACE_H

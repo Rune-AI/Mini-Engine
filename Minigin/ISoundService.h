@@ -9,7 +9,9 @@ namespace BearBones
     {
     public:
         virtual ~ISoundService() = default;
-
+        
+        virtual void PlaySimple(const std::string& soundName, const float volume) = 0;
+        virtual void PauzeSimple() = 0;
         virtual void Play(const std::string& soundName, const float volume) = 0;
         virtual void SetVolume(const std::string& soundName, const float volume)= 0;
         virtual void SetPauze(const std::string& soundName, bool isPauzed) = 0;
@@ -21,6 +23,8 @@ namespace BearBones
         NullSoundService() = default;
         ~NullSoundService() = default;
 
+        void PlaySimple(const std::string& /*soundName*/, const float /*volume*/) override {};
+        void PauzeSimple() override {};
         void Play(const std::string& /*soundName*/, const float /*volume*/) override {};
         void SetVolume(const std::string& /*soundName*/, const float /*volume*/) override {};
         void SetPauze(const std::string& /*soundName*/, bool /*isPauzed*/) override {};

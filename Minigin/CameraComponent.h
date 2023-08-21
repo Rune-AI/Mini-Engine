@@ -22,8 +22,18 @@ namespace BearBones
 		virtual void Render() const override;
 		virtual void RenderImGui() override;
 
-	private:
+		void SetTarget(Entity* target);
 
+	private:
+		Entity* m_pTarget{ nullptr };
+		float m_MaxX{ 496.f };
+		float m_MaxY{ 0.f };
+		float m_MinX{ 0.f };
+		float m_MinY{ 0.f };
+
+		float m_OffsetX{ -100.f };
+
+		float m_Lerp{ 1.f };
 
 	};
 }

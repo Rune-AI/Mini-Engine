@@ -5,10 +5,11 @@
 
 namespace Bomberman
 {
+	class LevelComponent;
 	class WallComponent final : public DestructableComponent
 	{
 	public:
-		WallComponent(BearBones::Entity* object);
+		WallComponent(BearBones::Entity* object, LevelComponent* level);
 		virtual ~WallComponent() = default;
 
 		WallComponent(const WallComponent& other) = delete;
@@ -19,7 +20,10 @@ namespace Bomberman
 		virtual void Update() override;
 		virtual void Render() const override;
 
-		virtual void OnDestroy() override;
+		virtual void OnNotify(int data) override;
+
+	private:
+		LevelComponent* m_pLevel;
 	};
 }
 
