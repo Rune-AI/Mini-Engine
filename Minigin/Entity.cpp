@@ -19,6 +19,11 @@ void BearBones::Entity::Update()
 {
 	for (const auto& component : m_pComponents)
 	{
+		if (!component) continue;
+		if (m_pComponents.size() == 0)
+		{
+			continue;
+		}
 		component->Update();
 	}
 	// todo : add erase flag, indexes to erase and erase them in update to avoid unexpected behaviors
@@ -28,6 +33,7 @@ void BearBones::Entity::Render() const
 {
 	for (const auto& component : m_pComponents)
 	{
+		if (!component) continue;
 		component->Render();
 	}
 }
@@ -36,6 +42,7 @@ void BearBones::Entity::RenderImGui()
 {
 	for (const auto& component : m_pComponents)
 	{
+		if (!component) continue;
 		component->RenderImGui();
 	}
 }

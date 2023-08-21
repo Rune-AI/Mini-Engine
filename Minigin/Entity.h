@@ -5,7 +5,7 @@
 #include <memory>
 #include <string>
 
-//#include "Component.h"
+#include "Component.h"
 //#include "TransformComponent.h"
 
 namespace BearBones
@@ -114,16 +114,17 @@ namespace BearBones
 	template <ComponentType T>
 	void Entity::RemoveComponent()
 	{
-
+		int index{};
 		for (auto it = m_pComponents.begin(); it != m_pComponents.end(); ++it)
 		{
+			++index;
 			T* pT = dynamic_cast<T*>((*it).get());
 			if (pT)
 			{
-				auto component = m_pComponents.at(it);
+				auto component = m_pComponents.at(index);
 				if (component->GetCanBeRemoved())
 				{
-					component->MarkForDeletion();
+					component->m_MarkedForDeletion = true;
 					m_pComponents.erase(it);
 				}
 				return;
