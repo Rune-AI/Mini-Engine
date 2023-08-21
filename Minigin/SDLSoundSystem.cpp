@@ -4,12 +4,14 @@
 #include "ResourceManager.h"
 #include <mutex>
 
-class BearBones::SDLSoundSystemImpl
+class BearBones::SDLSoundSystem::Impl
 {
 public:
-    SDLSoundSystemImpl(int channelCount);
-    ~SDLSoundSystemImpl();
+    Impl(int channelCount);
+    ~Impl();
 
+    void PlaySimple(const std::string& soundName, const float volume);
+    void PauzeSimple();
     void Play(const std::string& soundName, const float volume);
     void SetVolume(const std::string& soundName, const float volume);
     void SetPauze(const std::string& soundName, const bool isPauzed);
@@ -34,21 +36,31 @@ private:
 
 
     // ring buffer
-    static int m_head;
-    static int m_tail;
+    int m_head;
+    int m_tail;
 
     // song queue
     static const int m_maxPending = 16;
-    static PlaySound m_pendingSounds[m_maxPending];
-    static int m_numPendingSounds;
+    PlaySound m_pendingSounds[m_maxPending];
+    int m_numPendingSounds;
 
     
 };
 
 
 BearBones::SDLSoundSystem::SDLSoundSystem(int channelCount)
-    : m_pImpl(std::make_unique<SDLSoundSystemImpl>(channelCount))
+    : m_pImpl(std::make_unique<Impl>(channelCount))
 {
+}
+
+void BearBones::SDLSoundSystem::PlaySimple(const std::string& soundName, const float volume)
+{
+    m_pImpl->PlaySimple(soundName, volume);
+}
+
+void BearBones::SDLSoundSystem::PauzeSimple()
+{
+    m_pImpl->PauzeSimple();
 }
 
 void BearBones::SDLSoundSystem::Play(const std::string& soundName, const float volume)
@@ -71,20 +83,37 @@ void BearBones::SDLSoundSystem::HaltService()
     m_pImpl->HaltService();
 }
 
-BearBones::SDLSoundSystemImpl::SDLSoundSystemImpl(int channelCount)
+BearBones::SDLSoundSystem::Impl::Impl(int channelCount)
     : m_isHaltCalled{false}
 {
     m_head = 0;
     m_tail = 0;
 
-    Mix_ReserveChannels(channelCount);
+    Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, channelCount, 2048);
+    //Mix_ReserveChannels(channelCount);
+
+    /*std::thread soundThread(&Impl::SoundPlayLoop, this);
+    soundThread.detach();*/
 }
 
-BearBones::SDLSoundSystemImpl::~SDLSoundSystemImpl()
+BearBones::SDLSoundSystem::Impl::~Impl()
 {
 }
 
-void BearBones::SDLSoundSystemImpl::Play(const std::string& soundName, const float volume)
+void BearBones::SDLSoundSystem::Impl::PlaySimple(const std::string& soundName, const float /*volume*/)
+{
+    std::string SoundPath = ResourceManager::GetInstance().LoadSound(soundName);
+    auto resource = Mix_LoadMUS(SoundPath.c_str());
+    Mix_PlayMusic(resource, 0);
+}
+
+void BearBones::SDLSoundSystem::Impl::PauzeSimple()
+{
+
+	Mix_PauseMusic();
+}
+
+void BearBones::SDLSoundSystem::Impl::Play(const std::string& soundName, const float volume)
 {
     {
         std::unique_lock<std::mutex> lock(m_queueMutex);
@@ -120,21 +149,21 @@ void BearBones::SDLSoundSystemImpl::Play(const std::string& soundName, const flo
     
 }
 
-void BearBones::SDLSoundSystemImpl::SetVolume(const std::string& /*soundName*/, const float /*volume*/)
+void BearBones::SDLSoundSystem::Impl::SetVolume(const std::string& /*soundName*/, const float /*volume*/)
 {
 
 }
 
-void BearBones::SDLSoundSystemImpl::SetPauze(const std::string& /*soundName*/, const bool /*isPauzed*/)
+void BearBones::SDLSoundSystem::Impl::SetPauze(const std::string& /*soundName*/, const bool /*isPauzed*/)
 {
 }
 
-void BearBones::SDLSoundSystemImpl::HaltService()
+void BearBones::SDLSoundSystem::Impl::HaltService()
 {
     m_isHaltCalled = true;
 }
 
-void BearBones::SDLSoundSystemImpl::SoundPlayLoop()
+void BearBones::SDLSoundSystem::Impl::SoundPlayLoop()
 {
     while (true)
     {

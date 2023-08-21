@@ -6,7 +6,7 @@
 
 namespace BearBones
 {
-    class SDLSoundSystemImpl;
+    //class SDLSoundSystemImpl;
 
     class SDLSoundSystem final : public ISoundService
     {
@@ -14,13 +14,15 @@ namespace BearBones
         SDLSoundSystem(int channelCount = 4);
         ~SDLSoundSystem() = default;
 
+        void PlaySimple(const std::string& soundName, const float volume) override;
+        void PauzeSimple() override;
         void Play(const std::string& soundName, const float volume) override;
         void SetVolume(const std::string& soundName, const float volume) override;
         void SetPauze(const std::string& soundName, bool isPauzed) override;
 
     private:
-        
-        std::unique_ptr<SDLSoundSystemImpl> m_pImpl;
+        class Impl;
+        std::unique_ptr<Impl> m_pImpl;
 
         void HaltService();
     };
