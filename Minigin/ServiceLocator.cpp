@@ -1,5 +1,6 @@
 #include "ServiceLocator.h"
 #include "ISoundService.h"
+#include <thread>
 
 BearBones::ISoundService* BearBones::ServiceLocator::m_soundService{ &m_defaultSoundService };
 
