@@ -2,10 +2,12 @@
 #define PICKUP_COMPONENT_H
 
 #include "Component.h"
+#include <IObserver.h>
+#include "PlayerController.h"
 
 namespace Bomberman
 {
-	class PickupComponent : public BearBones::Component
+	class PickupComponent : public BearBones::Component, public BearBones::IObserver<PlayerController*, int>
 	{
 	public:
 		PickupComponent(BearBones::Entity* object);

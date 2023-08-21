@@ -2,6 +2,7 @@
 #define TRIGGER_COMPONENT_H
 
 #include "Component.h"
+#include <vector>
 
 namespace Bomberman
 {
@@ -19,7 +20,14 @@ namespace Bomberman
 		virtual void Update() override;
 		virtual void Render() const override;
 
-		virtual void OnPickup() = 0;
+		virtual void OnTouch(BearBones::Entity* other) = 0;
+
+		void AddObserver(BearBones::Entity* observer);
+		void SetObservers(std::vector<BearBones::Entity*> observers);
+
+	private:
+		float triggerRange{14.f};
+		std::vector<BearBones::Entity*> m_Observers;
 	};
 }
 
