@@ -2,10 +2,11 @@
 #define DESTRUCTABLE_COMPONENT_H
 
 #include "Component.h"
+#include <IObserver.h>
 
 namespace Bomberman
 {
-	class DestructableComponent : public BearBones::Component
+	class DestructableComponent : public BearBones::Component, public BearBones::IObserver<DestructableComponent*, int>
 	{
 	public:
 		DestructableComponent(BearBones::Entity* object);
@@ -19,7 +20,8 @@ namespace Bomberman
 		virtual void Update() override;
 		virtual void Render() const override;
 
-		virtual void OnDestroy() = 0;
+		virtual void OnNotify(int data) = 0;
+		virtual IObserver<DestructableComponent*, int>* GetObserver() { return this; };
 	};
 }
 
