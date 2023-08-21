@@ -1,6 +1,6 @@
 #if _DEBUG
 #if __has_include(<vld.h>)
-//#include <vld.h>
+#include <vld.h>
 #endif
 #endif
 
@@ -19,6 +19,17 @@ using namespace BearBones;
 #include <TransformComponent.h>
 
 #include "LevelComponent.h"
+#include "EnemyAIController.h"
+#include "AnimationComponent.h"
+#include "EntityFactory.h"
+#include "PlayerController.h"
+#include "DestructableComponent.h"
+#include "DoorComponent.h"
+
+#include "GameManager.h"
+#include <ServiceLocator.h>
+#include <SDLSoundSystem.h>
+#include <ResourceManager.h>
 
 Scene* createGameScene()
 {
@@ -40,12 +51,32 @@ Scene* createGameScene()
 	Level->AddComponent<Bomberman::LevelComponent>(backgroundSize.x / backgroundTileSize, backgroundSize.y / backgroundTileSize);
 	
 
+	Bomberman::EntityFactory entityFactory{};
+	auto player = entityFactory.CreatePlayer(Level.get());
+	player->AddComponent<Bomberman::PlayerController>(Level.get());
+	player->GetTransform()->SetLocalPosition(16.f, 16.f);
+
 
 	float cameraScale = float(windowHeight)/ backgroundSize.y;
 	camera->GetTransform()->SetLocalScale(cameraScale, cameraScale);
 
+	auto levelComp = Level->GetComponent<Bomberman::LevelComponent>();
+	levelComp->AddPlayer(player.get());
+	levelComp->SpawnEnemies();
+	levelComp->SetTriggers();
 
-	//scene.Add(std::move(camera));
+
+	//auto door = entityFactory.CreateDoor(Level.get());
+	//door->GetComponent<Bomberman::DoorComponent>()->AddObserver(player.get());
+	//door->GetTransform()->SetLocalPosition(16.f, 48.f);
+
+	//scene.Add(std::move(door));
+
+
+	camera->GetComponent<CameraComponent>()->SetTarget(player.get());
+
+	scene.Add(std::move(camera));
+	scene.Add(std::move(player));
 	scene.Add(std::move(Level));
 	scene.Add(std::move(background));
 	return &scene;
@@ -53,16 +84,23 @@ Scene* createGameScene()
 
 void load()
 {
-	auto gameScene = createGameScene();
-	gameScene->SetIsActive(true);
+	Bomberman::GameManager::GetInstance().LoadOptions();
 
+	BearBones::ServiceLocator::GetSoundService()->PlaySimple("Resources/Sounds/Menu2.mp3", 50000);
+
+	/*auto gameScene = createGameScene();
+	gameScene->SetIsActive(true);*/
 }
 
 
 int main(int, char* [])
 {
+	BearBones::ServiceLocator::RegisterSoundService(new BearBones::SDLSoundSystem(4));
+
 	Minigin engine("./BombermanData/", windowWidth, windowHeight);
 	engine.Run(load);
+
+	BearBones::ServiceLocator::DestroyServices();
 
 	return 0;
 }
