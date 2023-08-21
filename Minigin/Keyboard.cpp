@@ -1,6 +1,7 @@
 #include "Keyboard.h"
 #include <vector>
 #include <SDL.h>
+#include <iostream>
 class BearBones::Keyboard::KeyboardImpl
 {
 public:
