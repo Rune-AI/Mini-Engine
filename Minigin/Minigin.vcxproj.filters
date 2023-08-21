@@ -37,9 +37,6 @@
     <Filter Include="Engine\Services\Sound">
       <UniqueIdentifier>{a63e1436-134c-4444-a1d3-b8edd0f4021e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Services\Physics">
-      <UniqueIdentifier>{5a344f52-b559-43bc-b21e-4b3860247719}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entity.h">
@@ -141,9 +138,6 @@
     <ClInclude Include="SDLSoundSystem.h">
       <Filter>Engine\Services\Sound</Filter>
     </ClInclude>
-    <ClInclude Include="RigidBody2DComponent.h">
-      <Filter>Engine\ECS\Components</Filter>
-    </ClInclude>
     <ClInclude Include="Keyboard.h">
       <Filter>Engine\Input</Filter>
     </ClInclude>
@@ -238,9 +232,6 @@
     </ClCompile>
     <ClCompile Include="SDLSoundSystem.cpp">
       <Filter>Engine\Services\Sound</Filter>
-    </ClCompile>
-    <ClCompile Include="RigidBody2DComponent.cpp">
-      <Filter>Engine\ECS\Components</Filter>
     </ClCompile>
     <ClCompile Include="Keyboard.cpp">
       <Filter>Engine\Input</Filter>
