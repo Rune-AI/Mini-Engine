@@ -5,10 +5,16 @@
 
 namespace Bomberman
 {
-	class EnemyAIController : public BombermanControllerComponent
+	enum class Intelligence
+	{
+		Dumb,
+		Smart
+	};
+
+	class EnemyAIController : public ControllerComponent
 	{
 	public:
-		EnemyAIController(BearBones::Entity* object);
+		EnemyAIController(BearBones::Entity* object, BearBones::Entity* level);
 		virtual ~EnemyAIController() = default;
 
 		EnemyAIController(const EnemyAIController& other) = delete;
@@ -17,14 +23,14 @@ namespace Bomberman
 		EnemyAIController& operator=(EnemyAIController&& other) = delete;
 
 		virtual void Update() override;
-		virtual void Render() const override = 0;
+		virtual void Render() const override;
 
-		virtual void OnPickup() = 0;
+		void SetIntelligence(Intelligence intelligence);
 
 	private:
-		int m_Smart;
-		int m_Speed;
-		int m_Points;
+		Intelligence m_Intelligence{ Intelligence::Dumb };
+		int m_Points{100};
+		int m_LastIndex{};
 	};
 }
 
