@@ -1,15 +1,25 @@
-#ifndef PICKUP_COMPONENT_H
-#define PICKUP_COMPONENT_H
+#ifndef CONTROLLER_COMPONENT_H
+#define CONTROLLER_COMPONENT_H
 
 #include "Component.h"
-#include <Entity.h>
 
 namespace Bomberman
 {
+	class LevelComponent;
+
+	enum class Direction
+	{
+		None,
+		Up,
+		Down,
+		Left,
+		Right
+	};
+
 	class ControllerComponent : public BearBones::Component
 	{
 	public:
-		ControllerComponent(BearBones::Entity* object);
+		ControllerComponent(BearBones::Entity* object, BearBones::Entity* level);
 		virtual ~ControllerComponent() = default;
 
 		ControllerComponent(const ControllerComponent& other) = delete;
@@ -20,8 +30,17 @@ namespace Bomberman
 		virtual void Update() override;
 		virtual void Render() const override;
 
-	private:
-		BearBones::Entity* m_pLevel;
+		void Move(float x, float y);
+		void Move(Direction direction);
+		Direction GetDirection() const;
+
+		void SetSpeed(float speed);
+
+	protected:
+		LevelComponent* m_pLevel;
+		float m_Speed{1};
+		Direction m_LastDirection{Direction::Down};
+		float m_CollisionSize{ 16.f };
 	};
 }
 
