@@ -19,21 +19,49 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AnimationComponent.cpp" />
+    <ClCompile Include="BombCommand.cpp" />
+    <ClCompile Include="BombComponent.cpp" />
     <ClCompile Include="ControllerComponent.cpp" />
+    <ClCompile Include="DebugComponent.cpp" />
     <ClCompile Include="DestructableComponent.cpp" />
+    <ClCompile Include="DoorComponent.cpp" />
     <ClCompile Include="EnemyAIController.cpp" />
+    <ClCompile Include="EntityFactory.cpp" />
+    <ClCompile Include="ExplosionComponent.cpp" />
+    <ClCompile Include="ExtraBombComponent.cpp" />
+    <ClCompile Include="FlamePowerpupComponent.cpp" />
+    <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="KillPlayerVolumeComponent.cpp" />
+    <ClCompile Include="KillVolumeComponent.cpp" />
     <ClCompile Include="LevelComponent.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="PickupComponent.cpp" />
+    <ClCompile Include="MenuComponent.cpp" />
+    <ClCompile Include="PlayerController.cpp" />
+    <ClCompile Include="PointsOnDeathComponent.cpp" />
     <ClCompile Include="TriggerComponent.cpp" />
     <ClCompile Include="WallComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AnimationComponent.h" />
+    <ClInclude Include="BombCommand.h" />
+    <ClInclude Include="BombComponent.h" />
     <ClInclude Include="ControllerComponent.h" />
+    <ClInclude Include="DebugComponent.h" />
     <ClInclude Include="DestructableComponent.h" />
+    <ClInclude Include="DoorComponent.h" />
     <ClInclude Include="EnemyAIController.h" />
+    <ClInclude Include="EntityFactory.h" />
+    <ClInclude Include="ExplosionComponent.h" />
+    <ClInclude Include="ExtraBombComponent.h" />
+    <ClInclude Include="FlamePowerpupComponent.h" />
+    <ClInclude Include="GameManager.h" />
+    <ClInclude Include="KillPlayerVolumeComponent.h" />
+    <ClInclude Include="KillVolumeComponent.h" />
     <ClInclude Include="LevelComponent.h" />
-    <ClInclude Include="PickupComponent.h" />
+    <ClInclude Include="MenuComponent.h" />
+    <ClInclude Include="PlayerController.h" />
+    <ClInclude Include="PointsOnDeathComponent.h" />
     <ClInclude Include="TriggerComponent.h" />
     <ClInclude Include="WallComponent.h" />
   </ItemGroup>

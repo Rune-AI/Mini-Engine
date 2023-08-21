@@ -8,17 +8,20 @@
     <Filter Include="Source Files\Components">
       <UniqueIdentifier>{b8855d76-b6d1-4b5c-85f2-ee764876a306}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Components\Pickups">
-      <UniqueIdentifier>{cbe50dc2-ef8c-45e2-82f4-69addbb5adf1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Components\Triggerables">
       <UniqueIdentifier>{04bb0e19-70da-433d-b6be-db5b06b18bd2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Components\Enemies">
-      <UniqueIdentifier>{b653b23f-2566-49bd-845c-d0f5bcd88ca8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Components\Controller">
+    <Filter Include="Source Files\Components\Controllers">
       <UniqueIdentifier>{248cfd46-b0b8-4f64-90a2-d2e6a69cbc68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Commands">
+      <UniqueIdentifier>{3714510a-4b44-4676-858c-0e5b985ff5bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\Destroyables">
+      <UniqueIdentifier>{ba19db3d-8f69-4be9-8e67-525d177b0098}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\Entities">
+      <UniqueIdentifier>{29a39f29-bcd4-438f-b6be-d79fa663bc0a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -28,46 +31,130 @@
     <ClCompile Include="LevelComponent.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
-    <ClCompile Include="DestructableComponent.cpp">
-      <Filter>Source Files\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="WallComponent.cpp">
-      <Filter>Source Files\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="PickupComponent.cpp">
-      <Filter>Source Files\Components\Pickups</Filter>
-    </ClCompile>
     <ClCompile Include="TriggerComponent.cpp">
       <Filter>Source Files\Components\Triggerables</Filter>
     </ClCompile>
     <ClCompile Include="ControllerComponent.cpp">
-      <Filter>Source Files\Components\Controller</Filter>
+      <Filter>Source Files\Components\Controllers</Filter>
     </ClCompile>
     <ClCompile Include="EnemyAIController.cpp">
-      <Filter>Source Files\Components\Controller</Filter>
+      <Filter>Source Files\Components\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationComponent.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityFactory.cpp">
+      <Filter>Source Files\Components\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerController.cpp">
+      <Filter>Source Files\Components\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="BombCommand.cpp">
+      <Filter>Source Files\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="ExplosionComponent.cpp">
+      <Filter>Source Files\Components\Triggerables</Filter>
+    </ClCompile>
+    <ClCompile Include="DestructableComponent.cpp">
+      <Filter>Source Files\Components\Destroyables</Filter>
+    </ClCompile>
+    <ClCompile Include="BombComponent.cpp">
+      <Filter>Source Files\Components\Destroyables</Filter>
+    </ClCompile>
+    <ClCompile Include="WallComponent.cpp">
+      <Filter>Source Files\Components\Destroyables</Filter>
+    </ClCompile>
+    <ClCompile Include="PointsOnDeathComponent.cpp">
+      <Filter>Source Files\Components\Destroyables</Filter>
+    </ClCompile>
+    <ClCompile Include="DoorComponent.cpp">
+      <Filter>Source Files\Components\Triggerables</Filter>
+    </ClCompile>
+    <ClCompile Include="FlamePowerpupComponent.cpp">
+      <Filter>Source Files\Components\Triggerables</Filter>
+    </ClCompile>
+    <ClCompile Include="KillVolumeComponent.cpp">
+      <Filter>Source Files\Components\Triggerables</Filter>
+    </ClCompile>
+    <ClCompile Include="KillPlayerVolumeComponent.cpp">
+      <Filter>Source Files\Components\Triggerables</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuComponent.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="DebugComponent.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="ExtraBombComponent.cpp">
+      <Filter>Source Files\Components\Triggerables</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LevelComponent.h">
       <Filter>Source Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="DestructableComponent.h">
-      <Filter>Source Files\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="WallComponent.h">
-      <Filter>Source Files\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="PickupComponent.h">
-      <Filter>Source Files\Components\Pickups</Filter>
-    </ClInclude>
     <ClInclude Include="TriggerComponent.h">
       <Filter>Source Files\Components\Triggerables</Filter>
     </ClInclude>
     <ClInclude Include="ControllerComponent.h">
-      <Filter>Source Files\Components\Controller</Filter>
+      <Filter>Source Files\Components\Controllers</Filter>
     </ClInclude>
     <ClInclude Include="EnemyAIController.h">
-      <Filter>Source Files\Components\Controller</Filter>
+      <Filter>Source Files\Components\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationComponent.h">
+      <Filter>Source Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityFactory.h">
+      <Filter>Source Files\Components\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerController.h">
+      <Filter>Source Files\Components\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="BombCommand.h">
+      <Filter>Source Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="ExplosionComponent.h">
+      <Filter>Source Files\Components\Triggerables</Filter>
+    </ClInclude>
+    <ClInclude Include="DestructableComponent.h">
+      <Filter>Source Files\Components\Destroyables</Filter>
+    </ClInclude>
+    <ClInclude Include="BombComponent.h">
+      <Filter>Source Files\Components\Destroyables</Filter>
+    </ClInclude>
+    <ClInclude Include="WallComponent.h">
+      <Filter>Source Files\Components\Destroyables</Filter>
+    </ClInclude>
+    <ClInclude Include="PointsOnDeathComponent.h">
+      <Filter>Source Files\Components\Destroyables</Filter>
+    </ClInclude>
+    <ClInclude Include="DoorComponent.h">
+      <Filter>Source Files\Components\Triggerables</Filter>
+    </ClInclude>
+    <ClInclude Include="FlamePowerpupComponent.h">
+      <Filter>Source Files\Components\Triggerables</Filter>
+    </ClInclude>
+    <ClInclude Include="KillVolumeComponent.h">
+      <Filter>Source Files\Components\Triggerables</Filter>
+    </ClInclude>
+    <ClInclude Include="KillPlayerVolumeComponent.h">
+      <Filter>Source Files\Components\Triggerables</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuComponent.h">
+      <Filter>Source Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugComponent.h">
+      <Filter>Source Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="ExtraBombComponent.h">
+      <Filter>Source Files\Components\Triggerables</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
