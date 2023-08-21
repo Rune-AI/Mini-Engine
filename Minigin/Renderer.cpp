@@ -79,7 +79,9 @@ void BearBones::Renderer::Destroy()
 
 void BearBones::Renderer::RenderCopy(const Texture2D& texture, const SDL_Rect* srcrect, const SDL_Rect* dstrect) const
 {
-	SDL_RenderCopy(GetSDLRenderer(), texture.GetSDLTexture(), srcrect, dstrect);
+	auto camdstrect = *dstrect;
+	WorldToCamera(camdstrect);
+	SDL_RenderCopy(GetSDLRenderer(), texture.GetSDLTexture(), srcrect, &camdstrect);
 }
 
 void BearBones::Renderer::RenderTexture(const Texture2D& texture, const float x, const float y) const
@@ -150,6 +152,10 @@ void BearBones::Renderer::WorldToCamera(SDL_Rect& rect) const
 	rect.x -= int(camPos.x);
 	rect.y -= int(camPos.y);
 
+	rect.x = int(rect.x * camScale.x);
+	rect.y = int(rect.y * camScale.y);
 	rect.w = int(rect.w * camScale.x);
 	rect.h = int(rect.h * camScale.y);
+
+
 }
