@@ -49,6 +49,8 @@ void BearBones::Scene::Update()
 
 	for(auto& object : m_objects)
 	{
+		if (!object) continue;
+		if (!object->IsActive()) continue;
 		object->Update();
 	}
 }
@@ -59,6 +61,8 @@ void BearBones::Scene::Render() const
 
 	for (const auto& object : m_objects)
 	{
+		if (!object->IsActive()) continue;
+		if (!object) continue;
 		object->Render();
 	}
 }
@@ -69,6 +73,8 @@ void BearBones::Scene::RenderImGui()
 
 	for (const auto& object : m_objects)
 	{
+		if (!object->IsActive()) continue;
+		if (!object) continue;
 		object->RenderImGui();
 	}
 }

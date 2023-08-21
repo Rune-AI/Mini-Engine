@@ -6,7 +6,10 @@ void BearBones::SceneManager::Update()
 {
 	for(auto& scene : m_scenes)
 	{
-		scene->Update();
+		if (scene->GetIsActive())
+		{
+			scene->Update();
+		}
 	}
 }
 
@@ -14,7 +17,10 @@ void BearBones::SceneManager::Render()
 {
 	for (const auto& scene : m_scenes)
 	{
-		scene->Render();
+		if (scene->GetIsActive())
+		{
+			scene->Render();
+		}
 	}
 }
 
@@ -22,7 +28,10 @@ void BearBones::SceneManager::RenderImGui()
 {
 	for (const auto& scene : m_scenes)
 	{
-		scene->RenderImGui();
+		if (scene->GetIsActive())
+		{
+			scene->RenderImGui();
+		}
 	}
 }
 
@@ -48,6 +57,18 @@ BearBones::Scene* BearBones::SceneManager::GetActiveScene() const
 		}
 	}
 	return nullptr;
+}
+
+void BearBones::SceneManager::RemoveScene(std::string name)
+{
+	for (auto it = m_scenes.begin(); it != m_scenes.end(); ++it)
+	{
+		if ((*it)->GetName() == name)
+		{
+			m_scenes.erase(it);
+			return;
+		}
+	}
 }
 
 BearBones::Scene& BearBones::SceneManager::CreateScene(const std::string& name)
